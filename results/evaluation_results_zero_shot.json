@@ -1,0 +1,1005 @@
+{
+  "summary": {
+    "prompt_variant": "zero_shot",
+    "num_episodes": 10,
+    "overall_success_rate": 0.7,
+    "overall_step_accuracy": 0.3217391304347826,
+    "overall_success_rate_formatted": "70.00%",
+    "overall_step_accuracy_formatted": "32.17%",
+    "total_successes": 7,
+    "total_steps": 115,
+    "total_correct_steps": 37
+  },
+  "episodes": [
+    {
+      "goal": "Create a new contact for Laura Hernandez. Their number is +13763027452.",
+      "episode_log": [
+        {
+          "step": 1,
+          "prompt": "Your goal is to: Create a new contact for Laura Hernandez. Their number is +13763027452.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    \n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "CLICK(\"Create new contact\")",
+          "llm_reason": "N/A",
+          "agent_action": "{\"action_type\": \"open_app\", \"app_name\": \"contacts\"}\n",
+          "exact_match": false
+        },
+        {
+          "step": 2,
+          "prompt": "Your goal is to: Create a new contact for Laura Hernandez. Their number is +13763027452.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    \n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "CLICK(\"Create new contact\")",
+          "llm_reason": "N/A",
+          "agent_action": "{\"action_type\": \"wait\"}\n",
+          "exact_match": false
+        },
+        {
+          "step": 3,
+          "prompt": "Your goal is to: Create a new contact for Laura Hernandez. Their number is +13763027452.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    \n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "CLICK(\"Create new contact\")",
+          "llm_reason": "N/A",
+          "agent_action": "{\"action_type\": \"wait\"}\n",
+          "exact_match": false
+        },
+        {
+          "step": 4,
+          "prompt": "Your goal is to: Create a new contact for Laura Hernandez. Their number is +13763027452.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    - Create contact\n- Highlights\n- Fix & manage\n- Open navigation drawer\n- Signed in as Device Account and settings.\n- Phone contacts\n- Email contacts\n- Company\n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "CLICK(\"Create contact\")",
+          "llm_reason": "N/A",
+          "agent_action": "CLICK(\"Create contact\")",
+          "exact_match": true
+        },
+        {
+          "step": 5,
+          "prompt": "Your goal is to: Create a new contact for Laura Hernandez. Their number is +13763027452.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    \n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "CLICK(\"Create new contact\")",
+          "llm_reason": "N/A",
+          "agent_action": "{\"action_type\": \"wait\"}\n",
+          "exact_match": false
+        },
+        {
+          "step": 6,
+          "prompt": "Your goal is to: Create a new contact for Laura Hernandez. Their number is +13763027452.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    - Cancel\n- Save\n- More options\n- Add contact photo\n- Add picture\n- First name\n- Last name\n- Company\n- Phone\n- Mobile Phone\n- Show dropdown menu\n- Email\n- Home Email\n- Significant date\n- Show date picker\n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "TYPE(\"Laura\")",
+          "llm_reason": "N/A",
+          "agent_action": "TYPE(\"Laura\")",
+          "exact_match": true
+        },
+        {
+          "step": 7,
+          "prompt": "Your goal is to: Create a new contact for Laura Hernandez. Their number is +13763027452.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    - Cancel\n- Save\n- More options\n- Add contact photo\n- Add picture\n- Laura\n- Last name\n- Company\n- Phone\n- Back\n- Switch input method\n- More features\n- Voice input\n- Q\n- W\n- E\n- R\n- T\n- Y\n- U\n- I\n- O\n- P\n- A\n- S\n- D\n- F\n- G\n- H\n- J\n- K\n- L\n- Shift\n- Z\n- X\n- C\n- V\n- B\n- N\n- M\n- Delete\n- Symbol keyboard\n- ,\n- Emoji button\n- Space\n- .\n- Next\n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "TYPE(\"Laura\")",
+          "llm_reason": "N/A",
+          "agent_action": "TYPE(\"Hernandez\")",
+          "exact_match": false
+        },
+        {
+          "step": 8,
+          "prompt": "Your goal is to: Create a new contact for Laura Hernandez. Their number is +13763027452.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    - Cancel\n- Save\n- More options\n- Add contact photo\n- Add picture\n- Laura\n- Hernandez\n- Company\n- Phone\n- Back\n- Switch input method\n- More features\n- Voice input\n- Q\n- W\n- E\n- R\n- T\n- Y\n- U\n- I\n- O\n- P\n- A\n- S\n- D\n- F\n- G\n- H\n- J\n- K\n- L\n- Shift\n- Z\n- X\n- C\n- V\n- B\n- N\n- M\n- Delete\n- Symbol keyboard\n- ,\n- Emoji button\n- Space\n- .\n- Next\n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "CLICK(\"Phone\")",
+          "llm_reason": "N/A",
+          "agent_action": "TYPE(\"+13763027452\")",
+          "exact_match": false
+        },
+        {
+          "step": 9,
+          "prompt": "Your goal is to: Create a new contact for Laura Hernandez. Their number is +13763027452.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    - Cancel\n- Save\n- More options\n- Add contact photo\n- Add picture\n- Laura\n- Hernandez\n- Company\n- +1 376-302-7452\n- Mobile Phone\n- Show dropdown menu\n- Delete Mobile Phone\n- Back\n- Switch input method\n- 1\n- 2\n- 3\n- 4\n- 5\n- 6\n- 7\n- 8\n- 9\n- 0\n- q\n- w\n- e\n- r\n- t\n- y\n- u\n- i\n- o\n- p\n- a\n- s\n- d\n- f\n- g\n- h\n- j\n- k\n- l\n- Shift\n- z\n- x\n- c\n- v\n- b\n- n\n- m\n- Delete\n- Symbol keyboard\n- ,\n- Space\n- .\n- Enter\n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "CLICK(\"Save\")",
+          "llm_reason": "N/A",
+          "agent_action": "CLICK(\"Save\")",
+          "exact_match": true
+        },
+        {
+          "step": 10,
+          "prompt": "Your goal is to: Create a new contact for Laura Hernandez. Their number is +13763027452.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    - Navigate up\n- More options\n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "CLICK(\"More options\")",
+          "llm_reason": "N/A",
+          "agent_action": "CLICK(\"\")",
+          "exact_match": false
+        },
+        {
+          "step": 11,
+          "prompt": "Your goal is to: Create a new contact for Laura Hernandez. Their number is +13763027452.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    \n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "CLICK(\"Create new contact\")",
+          "llm_reason": "N/A",
+          "agent_action": "{\"action_type\": \"navigate_back\"}\n",
+          "exact_match": false
+        },
+        {
+          "step": 12,
+          "prompt": "Your goal is to: Create a new contact for Laura Hernandez. Their number is +13763027452.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    - Navigate up\n- Edit contact\n- Add to favorites\n- More options\n- Call\n- Text\n- Set up Duo video calling\n- Call Mobile +1 376-302-7452\n- Text Mobile +1 376-302-7452\n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "Since Laura Hernandez is not listed as an existing contact, and the goal is to create a new contact, the provided options won't help directly.  The app is already in the Contacts app.  Therefore, the necessary action is to find and click the button for adding a new contact.  Since that option is not explicitly listed, we will assume it exists and is visually identifiable.  Since there is no \"Add contact\" button specified in the UI, we will assume the UI has a visually distinct plus symbol for adding a new contact.  This symbol won't have discernible text.  To proceed using the available action format, we can use the implicit understanding of this plus symbol by referring to its common name.\n\nCLICK(\"Add contact\")",
+          "llm_reason": "N/A",
+          "agent_action": "{\"action_type\": \"status\", \"goal_status\": \"complete\"}\n",
+          "exact_match": false
+        }
+      ],
+      "success": true,
+      "step_accuracy": 0.25
+    },
+    {
+      "goal": "Create a new contact for Sofia Muller. Their number is +18687902985.",
+      "episode_log": [
+        {
+          "step": 1,
+          "prompt": "Your goal is to: Create a new contact for Sofia Muller. Their number is +18687902985.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    \n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "CLICK(\"Create new contact\")",
+          "llm_reason": "N/A",
+          "agent_action": "{\"action_type\": \"open_app\", \"app_name\": \"contacts\"}\n",
+          "exact_match": false
+        },
+        {
+          "step": 2,
+          "prompt": "Your goal is to: Create a new contact for Sofia Muller. Their number is +18687902985.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    \n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "CLICK(\"Create new contact\")",
+          "llm_reason": "N/A",
+          "agent_action": "{\"action_type\": \"wait\"}\n",
+          "exact_match": false
+        },
+        {
+          "step": 3,
+          "prompt": "Your goal is to: Create a new contact for Sofia Muller. Their number is +18687902985.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    - Create contact\n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "CLICK(\"Create contact\")",
+          "llm_reason": "N/A",
+          "agent_action": "CLICK(\"Create contact\")",
+          "exact_match": true
+        },
+        {
+          "step": 4,
+          "prompt": "Your goal is to: Create a new contact for Sofia Muller. Their number is +18687902985.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    - Contacts\n- Highlights\n- Signed in as Device Account and settings.\n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "CLICK(\"Contacts\")",
+          "llm_reason": "N/A",
+          "agent_action": "{\"action_type\": \"navigate_back\"}\n",
+          "exact_match": false
+        },
+        {
+          "step": 5,
+          "prompt": "Your goal is to: Create a new contact for Sofia Muller. Their number is +18687902985.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    - Contacts\n- Highlights\n- Signed in as Device Account and settings.\n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "CLICK(\"Contacts\")",
+          "llm_reason": "N/A",
+          "agent_action": "CLICK(\"Contacts\")",
+          "exact_match": true
+        },
+        {
+          "step": 6,
+          "prompt": "Your goal is to: Create a new contact for Sofia Muller. Their number is +18687902985.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    - Create contact\n- Highlights\n- Fix & manage\n- Open navigation drawer\n- Signed in as Device Account and settings.\n- Phone contacts\n- Email contacts\n- Company\n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "CLICK(\"Create contact\")",
+          "llm_reason": "N/A",
+          "agent_action": "CLICK(\"Create contact\")",
+          "exact_match": true
+        },
+        {
+          "step": 7,
+          "prompt": "Your goal is to: Create a new contact for Sofia Muller. Their number is +18687902985.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    \n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "CLICK(\"Create new contact\")",
+          "llm_reason": "N/A",
+          "agent_action": "{\"action_type\": \"wait\"}\n",
+          "exact_match": false
+        },
+        {
+          "step": 8,
+          "prompt": "Your goal is to: Create a new contact for Sofia Muller. Their number is +18687902985.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    - Cancel\n- Save\n- More options\n- Add contact photo\n- Add picture\n- First name\n- Last name\n- Company\n- Phone\n- Mobile Phone\n- Show dropdown menu\n- Email\n- Home Email\n- Significant date\n- Show date picker\n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "TYPE(\"Sofia\")",
+          "llm_reason": "N/A",
+          "agent_action": "TYPE(\"Sofia\")",
+          "exact_match": true
+        },
+        {
+          "step": 9,
+          "prompt": "Your goal is to: Create a new contact for Sofia Muller. Their number is +18687902985.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    - Cancel\n- Save\n- More options\n- Add contact photo\n- Add picture\n- Sofia\n- Last name\n- Company\n- Phone\n- Back\n- Switch input method\n- More features\n- Voice input\n- Q\n- W\n- E\n- R\n- T\n- Y\n- U\n- I\n- O\n- P\n- A\n- S\n- D\n- F\n- G\n- H\n- J\n- K\n- L\n- Shift\n- Z\n- X\n- C\n- V\n- B\n- N\n- M\n- Delete\n- Symbol keyboard\n- ,\n- Emoji button\n- Space\n- .\n- Next\n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "TYPE(\"Sofia\")",
+          "llm_reason": "N/A",
+          "agent_action": "TYPE(\"Muller\")",
+          "exact_match": false
+        },
+        {
+          "step": 10,
+          "prompt": "Your goal is to: Create a new contact for Sofia Muller. Their number is +18687902985.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    - Cancel\n- Save\n- More options\n- Add contact photo\n- Add picture\n- Sofia\n- Muller\n- Company\n- Phone\n- Back\n- Switch input method\n- More features\n- Voice input\n- Q\n- W\n- E\n- R\n- T\n- Y\n- U\n- I\n- O\n- P\n- A\n- S\n- D\n- F\n- G\n- H\n- J\n- K\n- L\n- Shift\n- Z\n- X\n- C\n- V\n- B\n- N\n- M\n- Delete\n- Symbol keyboard\n- ,\n- Emoji button\n- Space\n- .\n- Next\n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "TYPE(\"+18687902985\")",
+          "llm_reason": "N/A",
+          "agent_action": "TYPE(\"+18687902985\")",
+          "exact_match": true
+        },
+        {
+          "step": 11,
+          "prompt": "Your goal is to: Create a new contact for Sofia Muller. Their number is +18687902985.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    - Cancel\n- Save\n- More options\n- Add contact photo\n- Add picture\n- Sofia\n- Muller\n- Company\n- +1 868-790-2985\n- Mobile Phone\n- Show dropdown menu\n- Delete Mobile Phone\n- Back\n- Switch input method\n- 1\n- 2\n- 3\n- 4\n- 5\n- 6\n- 7\n- 8\n- 9\n- 0\n- q\n- w\n- e\n- r\n- t\n- y\n- u\n- i\n- o\n- p\n- a\n- s\n- d\n- f\n- g\n- h\n- j\n- k\n- l\n- Shift\n- z\n- x\n- c\n- v\n- b\n- n\n- m\n- Delete\n- Symbol keyboard\n- ,\n- Space\n- .\n- Enter\n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "CLICK(\"Save\")",
+          "llm_reason": "N/A",
+          "agent_action": "CLICK(\"Save\")",
+          "exact_match": true
+        },
+        {
+          "step": 12,
+          "prompt": "Your goal is to: Create a new contact for Sofia Muller. Their number is +18687902985.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    - Back\n- Switch input method\n- 1\n- 2\n- 3\n- 4\n- 5\n- 6\n- 7\n- 8\n- 9\n- 0\n- q\n- w\n- e\n- r\n- t\n- y\n- u\n- i\n- o\n- p\n- a\n- s\n- d\n- f\n- g\n- h\n- j\n- k\n- l\n- Shift\n- z\n- x\n- c\n- v\n- b\n- n\n- m\n- Delete\n- Symbol keyboard\n- ,\n- Space\n- .\n- Enter\n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "CLICK(\"1\")",
+          "llm_reason": "N/A",
+          "agent_action": "{\"action_type\": \"navigate_back\"}\n",
+          "exact_match": false
+        },
+        {
+          "step": 13,
+          "prompt": "Your goal is to: Create a new contact for Sofia Muller. Their number is +18687902985.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    - Create contact\n- Highlights\n- Fix & manage\n- Open navigation drawer\n- More options\n- Signed in as Device Account and settings.\n- Phone contacts\n- Email contacts\n- Company\n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "CLICK(\"Create contact\")",
+          "llm_reason": "N/A",
+          "agent_action": "{\"action_type\": \"status\", \"goal_status\": \"complete\"}\n",
+          "exact_match": false
+        }
+      ],
+      "success": true,
+      "step_accuracy": 0.46153846153846156
+    },
+    {
+      "goal": "Create a new contact for David Ibrahim. Their number is +19216079185.",
+      "episode_log": [
+        {
+          "step": 1,
+          "prompt": "Your goal is to: Create a new contact for David Ibrahim. Their number is +19216079185.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    - Create contact\n- Highlights\n- Fix & manage\n- Open navigation drawer\n- More options\n- Signed in as Device Account and settings.\n- Phone contacts\n- Email contacts\n- Company\n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "CLICK(\"Create contact\")",
+          "llm_reason": "N/A",
+          "agent_action": "CLICK(\"Create contact\")",
+          "exact_match": true
+        },
+        {
+          "step": 2,
+          "prompt": "Your goal is to: Create a new contact for David Ibrahim. Their number is +19216079185.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    - Phone\n- Messages\n- Chrome\n- Predicted app: Gmail\n- Search\n- Sun, Oct 15\n- Gmail\n- Photos\n- YouTube\n- Google app\n- Voice search\n- Google Lens\n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "CLICK(\"Phone\")",
+          "llm_reason": "N/A",
+          "agent_action": "{\"action_type\": \"open_app\", \"app_name\": \"Contacts\"}\n",
+          "exact_match": false
+        },
+        {
+          "step": 3,
+          "prompt": "Your goal is to: Create a new contact for David Ibrahim. Their number is +19216079185.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    - Create contact\n- Highlights\n- Fix & manage\n- Open navigation drawer\n- Signed in as Device Account and settings.\n- Phone contacts\n- Email contacts\n- Company\n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "CLICK(\"Create contact\")",
+          "llm_reason": "N/A",
+          "agent_action": "CLICK(\"Create contact\")",
+          "exact_match": true
+        },
+        {
+          "step": 4,
+          "prompt": "Your goal is to: Create a new contact for David Ibrahim. Their number is +19216079185.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    \n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "CLICK(\"Create new contact\")",
+          "llm_reason": "N/A",
+          "agent_action": "{\"action_type\": \"navigate_back\"}\n",
+          "exact_match": false
+        },
+        {
+          "step": 5,
+          "prompt": "Your goal is to: Create a new contact for David Ibrahim. Their number is +19216079185.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    - Create contact\n- Highlights\n- Fix & manage\n- Open navigation drawer\n- Signed in as Device Account and settings.\n- Phone contacts\n- Email contacts\n- Company\n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "CLICK(\"Create contact\")",
+          "llm_reason": "N/A",
+          "agent_action": "CLICK(\"Create contact\")",
+          "exact_match": true
+        },
+        {
+          "step": 6,
+          "prompt": "Your goal is to: Create a new contact for David Ibrahim. Their number is +19216079185.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    \n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "CLICK(\"Create new contact\")",
+          "llm_reason": "N/A",
+          "agent_action": "{\"action_type\": \"open_app\", \"app_name\": \"Contacts\"}\n",
+          "exact_match": false
+        },
+        {
+          "step": 7,
+          "prompt": "Your goal is to: Create a new contact for David Ibrahim. Their number is +19216079185.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    - Cancel\n- Save\n- More options\n- Add contact photo\n- Add picture\n- First name\n- Last name\n- Company\n- Phone\n- Mobile Phone\n- Show dropdown menu\n- Email\n- Home Email\n- Significant date\n- Show date picker\n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "TYPE(\"David\")",
+          "llm_reason": "N/A",
+          "agent_action": "TYPE(\"David\")",
+          "exact_match": true
+        },
+        {
+          "step": 8,
+          "prompt": "Your goal is to: Create a new contact for David Ibrahim. Their number is +19216079185.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    - Cancel\n- Save\n- More options\n- Add contact photo\n- Add picture\n- David\n- Last name\n- Company\n- Phone\n- Back\n- Switch input method\n- More features\n- Voice input\n- Q\n- W\n- E\n- R\n- T\n- Y\n- U\n- I\n- O\n- P\n- A\n- S\n- D\n- F\n- G\n- H\n- J\n- K\n- L\n- Shift\n- Z\n- X\n- C\n- V\n- B\n- N\n- M\n- Delete\n- Symbol keyboard\n- ,\n- Emoji button\n- Space\n- .\n- Next\n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "TYPE(\"David\")",
+          "llm_reason": "N/A",
+          "agent_action": "TYPE(\"Ibrahim\")",
+          "exact_match": false
+        },
+        {
+          "step": 9,
+          "prompt": "Your goal is to: Create a new contact for David Ibrahim. Their number is +19216079185.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    - Cancel\n- Save\n- More options\n- Add contact photo\n- Add picture\n- David\n- Ibrahim\n- Company\n- Phone\n- Back\n- Switch input method\n- More features\n- Voice input\n- Q\n- W\n- E\n- R\n- T\n- Y\n- U\n- I\n- O\n- P\n- A\n- S\n- D\n- F\n- G\n- H\n- J\n- K\n- L\n- Shift\n- Z\n- X\n- C\n- V\n- B\n- N\n- M\n- Delete\n- Symbol keyboard\n- ,\n- Emoji button\n- Space\n- .\n- Next\n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "TYPE(\"+19216079185\")",
+          "llm_reason": "N/A",
+          "agent_action": "TYPE(\"+19216079185\")",
+          "exact_match": true
+        },
+        {
+          "step": 10,
+          "prompt": "Your goal is to: Create a new contact for David Ibrahim. Their number is +19216079185.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    - Cancel\n- Save\n- More options\n- Add contact photo\n- Add picture\n- David\n- Ibrahim\n- Company\n- +1 921-607-9185\n- Mobile Phone\n- Show dropdown menu\n- Delete Mobile Phone\n- Back\n- Switch input method\n- 1\n- 2\n- 3\n- 4\n- 5\n- 6\n- 7\n- 8\n- 9\n- 0\n- q\n- w\n- e\n- r\n- t\n- y\n- u\n- i\n- o\n- p\n- a\n- s\n- d\n- f\n- g\n- h\n- j\n- k\n- l\n- Shift\n- z\n- x\n- c\n- v\n- b\n- n\n- m\n- Delete\n- Symbol keyboard\n- ,\n- Space\n- .\n- Enter\n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "CLICK(\"Save\")",
+          "llm_reason": "N/A",
+          "agent_action": "CLICK(\"Save\")",
+          "exact_match": true
+        },
+        {
+          "step": 11,
+          "prompt": "Your goal is to: Create a new contact for David Ibrahim. Their number is +19216079185.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    - Back\n- Switch input method\n- 1\n- 2\n- 3\n- 4\n- 5\n- 6\n- 7\n- 8\n- 9\n- 0\n- q\n- w\n- e\n- r\n- t\n- y\n- u\n- i\n- o\n- p\n- a\n- s\n- d\n- f\n- g\n- h\n- j\n- k\n- l\n- Shift\n- z\n- x\n- c\n- v\n- b\n- n\n- m\n- Delete\n- Symbol keyboard\n- ,\n- Space\n- .\n- Enter\n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "CLICK(\"+\") (The plus sign to add a new contact, which is implied to be present but not explicitly listed in the UI elements.)",
+          "llm_reason": "N/A",
+          "agent_action": "{\"action_type\": \"status\", \"goal_status\": \"complete\"}\n",
+          "exact_match": false
+        }
+      ],
+      "success": true,
+      "step_accuracy": 0.5454545454545454
+    },
+    {
+      "goal": "Create a new contact for Carlos Alves. Their number is +17585847921.",
+      "episode_log": [
+        {
+          "step": 1,
+          "prompt": "Your goal is to: Create a new contact for Carlos Alves. Their number is +17585847921.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    \n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "CLICK(\"Create new contact\")",
+          "llm_reason": "N/A",
+          "agent_action": "{\"action_type\": \"open_app\", \"app_name\": \"contacts\"}\n",
+          "exact_match": false
+        },
+        {
+          "step": 2,
+          "prompt": "Your goal is to: Create a new contact for Carlos Alves. Their number is +17585847921.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    \n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "CLICK(\"Create new contact\")",
+          "llm_reason": "N/A",
+          "agent_action": "{\"action_type\": \"wait\"}\n",
+          "exact_match": false
+        },
+        {
+          "step": 3,
+          "prompt": "Your goal is to: Create a new contact for Carlos Alves. Their number is +17585847921.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    - Create contact\n- Highlights\n- Fix & manage\n- Open navigation drawer\n- Signed in as Device Account and settings.\n- Phone contacts\n- Email contacts\n- Company\n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "CLICK(\"Create contact\")",
+          "llm_reason": "N/A",
+          "agent_action": "CLICK(\"Create contact\")",
+          "exact_match": true
+        },
+        {
+          "step": 4,
+          "prompt": "Your goal is to: Create a new contact for Carlos Alves. Their number is +17585847921.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    \n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "CLICK(\"Create new contact\")",
+          "llm_reason": "N/A",
+          "agent_action": "{\"action_type\": \"wait\"}\n",
+          "exact_match": false
+        },
+        {
+          "step": 5,
+          "prompt": "Your goal is to: Create a new contact for Carlos Alves. Their number is +17585847921.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    - Cancel\n- Save\n- More options\n- Add contact photo\n- Add picture\n- First name\n- Last name\n- Company\n- Phone\n- Mobile Phone\n- Show dropdown menu\n- Email\n- Home Email\n- Significant date\n- Show date picker\n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "TYPE(\"Carlos\")",
+          "llm_reason": "N/A",
+          "agent_action": "TYPE(\"Carlos\")",
+          "exact_match": true
+        },
+        {
+          "step": 6,
+          "prompt": "Your goal is to: Create a new contact for Carlos Alves. Their number is +17585847921.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    - Cancel\n- Save\n- More options\n- Add contact photo\n- Add picture\n- Carlos\n- Last name\n- Company\n- Phone\n- Back\n- Switch input method\n- More features\n- Voice input\n- Q\n- W\n- E\n- R\n- T\n- Y\n- U\n- I\n- O\n- P\n- A\n- S\n- D\n- F\n- G\n- H\n- J\n- K\n- L\n- Shift\n- Z\n- X\n- C\n- V\n- B\n- N\n- M\n- Delete\n- Symbol keyboard\n- ,\n- Emoji button\n- Space\n- .\n- Next\n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "TYPE(\"Carlos\")",
+          "llm_reason": "N/A",
+          "agent_action": "TYPE(\"Alves\")",
+          "exact_match": false
+        },
+        {
+          "step": 7,
+          "prompt": "Your goal is to: Create a new contact for Carlos Alves. Their number is +17585847921.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    - Cancel\n- Save\n- More options\n- Add contact photo\n- Add picture\n- Carlos\n- Alves\n- Company\n- Phone\n- Back\n- Switch input method\n- More features\n- Voice input\n- Q\n- W\n- E\n- R\n- T\n- Y\n- U\n- I\n- O\n- P\n- A\n- S\n- D\n- F\n- G\n- H\n- J\n- K\n- L\n- Shift\n- Z\n- X\n- C\n- V\n- B\n- N\n- M\n- Delete\n- Symbol keyboard\n- ,\n- Emoji button\n- Space\n- .\n- Next\n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "TYPE(\"+17585847921\")",
+          "llm_reason": "N/A",
+          "agent_action": "TYPE(\"+17585847921\")",
+          "exact_match": true
+        },
+        {
+          "step": 8,
+          "prompt": "Your goal is to: Create a new contact for Carlos Alves. Their number is +17585847921.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    - Cancel\n- Save\n- More options\n- Add contact photo\n- Add picture\n- Carlos\n- Alves\n- Company\n- +1 758-584-7921\n- Mobile Phone\n- Show dropdown menu\n- Delete Mobile Phone\n- Back\n- Switch input method\n- 1\n- 2\n- 3\n- 4\n- 5\n- 6\n- 7\n- 8\n- 9\n- 0\n- q\n- w\n- e\n- r\n- t\n- y\n- u\n- i\n- o\n- p\n- a\n- s\n- d\n- f\n- g\n- h\n- j\n- k\n- l\n- Shift\n- z\n- x\n- c\n- v\n- b\n- n\n- m\n- Delete\n- Symbol keyboard\n- ,\n- Space\n- .\n- Enter\n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "CLICK(\"Save\")",
+          "llm_reason": "N/A",
+          "agent_action": "CLICK(\"Save\")",
+          "exact_match": true
+        },
+        {
+          "step": 9,
+          "prompt": "Your goal is to: Create a new contact for Carlos Alves. Their number is +17585847921.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    - Cancel\n- Back\n- Switch input method\n- 1\n- 2\n- 3\n- 4\n- 5\n- 6\n- 7\n- 8\n- 9\n- 0\n- q\n- w\n- e\n- r\n- t\n- y\n- u\n- i\n- o\n- p\n- a\n- s\n- d\n- f\n- g\n- h\n- j\n- k\n- l\n- Shift\n- z\n- x\n- c\n- v\n- b\n- n\n- m\n- Delete\n- Symbol keyboard\n- ,\n- Space\n- .\n- Enter\n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "TYPE(\"Carlos Alves\")",
+          "llm_reason": "N/A",
+          "agent_action": "{\"action_type\": \"status\", \"goal_status\": \"complete\"}\n",
+          "exact_match": false
+        }
+      ],
+      "success": true,
+      "step_accuracy": 0.4444444444444444
+    },
+    {
+      "goal": "Create a new contact for Ema Liu. Their number is +14027363011.",
+      "episode_log": [
+        {
+          "step": 1,
+          "prompt": "Your goal is to: Create a new contact for Ema Liu. Their number is +14027363011.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    \n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "CLICK(\"Create new contact\")",
+          "llm_reason": "N/A",
+          "agent_action": "{\"action_type\": \"open_app\", \"app_name\": \"contacts\"}\n",
+          "exact_match": false
+        },
+        {
+          "step": 2,
+          "prompt": "Your goal is to: Create a new contact for Ema Liu. Their number is +14027363011.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    \n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "CLICK(\"Create new contact\")",
+          "llm_reason": "N/A",
+          "agent_action": "{\"action_type\": \"wait\"}\n",
+          "exact_match": false
+        },
+        {
+          "step": 3,
+          "prompt": "Your goal is to: Create a new contact for Ema Liu. Their number is +14027363011.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    \n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "CLICK(\"Create new contact\")",
+          "llm_reason": "N/A",
+          "agent_action": "{\"action_type\": \"wait\"}\n",
+          "exact_match": false
+        },
+        {
+          "step": 4,
+          "prompt": "Your goal is to: Create a new contact for Ema Liu. Their number is +14027363011.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    - Create contact\n- Highlights\n- Fix & manage\n- Open navigation drawer\n- Signed in as Device Account and settings.\n- Phone contacts\n- Email contacts\n- Company\n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "CLICK(\"Create contact\")",
+          "llm_reason": "N/A",
+          "agent_action": "CLICK(\"Create contact\")",
+          "exact_match": true
+        },
+        {
+          "step": 5,
+          "prompt": "Your goal is to: Create a new contact for Ema Liu. Their number is +14027363011.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    \n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "CLICK(\"Create new contact\")",
+          "llm_reason": "N/A",
+          "agent_action": "{\"action_type\": \"navigate_home\"}\n",
+          "exact_match": false
+        },
+        {
+          "step": 6,
+          "prompt": "Your goal is to: Create a new contact for Ema Liu. Their number is +14027363011.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    - Phone\n- Messages\n- Chrome\n- Predicted app: Gmail\n- Search\n- Sun, Oct 15\n- Gmail\n- Photos\n- YouTube\n- Google app\n- Voice search\n- Google Lens\n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "CLICK(\"Phone\")",
+          "llm_reason": "N/A",
+          "agent_action": "{\"action_type\": \"scroll\", \"direction\": \"up\", \"index\": 1}\n",
+          "exact_match": false
+        },
+        {
+          "step": 7,
+          "prompt": "Your goal is to: Create a new contact for Ema Liu. Their number is +14027363011.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    - Phone\n- Messages\n- Chrome\n- Predicted app: Gmail\n- Search\n- Sun, Oct 15\n- Gmail\n- Photos\n- YouTube\n- Google app\n- Voice search\n- Google Lens\n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "CLICK(\"Phone\")",
+          "llm_reason": "N/A",
+          "agent_action": "{\"action_type\": \"scroll\", \"direction\": \"down\", \"index\": 1}\n",
+          "exact_match": false
+        },
+        {
+          "step": 8,
+          "prompt": "Your goal is to: Create a new contact for Ema Liu. Their number is +14027363011.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    - Internet,AndroidWifi\n- Bluetooth.\n- Do Not Disturb.\n- Silent\n- Clear all silent notifications\n- Manage\n- Clear all notifications.\n- Collapse\n- Explore\n- Eject\n- Expand\n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "I cannot create a contact based on the provided UI elements.  There's no button to create a new contact. The interface seems to be related to notifications and system settings, not the contacts app itself.",
+          "llm_reason": "N/A",
+          "agent_action": "CLICK(\"Collapse\")",
+          "exact_match": false
+        },
+        {
+          "step": 9,
+          "prompt": "Your goal is to: Create a new contact for Ema Liu. Their number is +14027363011.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    - Internet,AndroidWifi\n- Bluetooth.\n- Do Not Disturb.\n- Silent\n- Clear all silent notifications\n- Manage\n- Clear all notifications.\n- Expand\n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "CLICK(\"Create new contact\")",
+          "llm_reason": "N/A",
+          "agent_action": "{\"action_type\": \"status\", \"goal_status\": \"infeasible\"}\n",
+          "exact_match": false
+        }
+      ],
+      "success": false,
+      "step_accuracy": 0.1111111111111111
+    },
+    {
+      "goal": "Create a new contact for Camila Martin. Their number is +12639585420.",
+      "episode_log": [
+        {
+          "step": 1,
+          "prompt": "Your goal is to: Create a new contact for Camila Martin. Their number is +12639585420.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    - Internet,AndroidWifi\n- Bluetooth.\n- Do Not Disturb.\n- Silent\n- Clear all silent notifications\n- Manage\n- Clear all notifications.\n- Expand\n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "CLICK(\"Expand\") (This will likely reveal more options, including adding a contact.)",
+          "llm_reason": "N/A",
+          "agent_action": "{\"action_type\": \"open_app\", \"app_name\": \"contacts\"}\n",
+          "exact_match": false
+        },
+        {
+          "step": 2,
+          "prompt": "Your goal is to: Create a new contact for Camila Martin. Their number is +12639585420.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    - Internet,AndroidWifi\n- Bluetooth.\n- Do Not Disturb.\n- Silent\n- Clear all silent notifications\n- Manage\n- Clear all notifications.\n- Expand\n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "CLICK(\"Create contact\") \n*(Not visible in the UI description, but this would be the necessary next step)*",
+          "llm_reason": "N/A",
+          "agent_action": "{\"action_type\": \"navigate_back\"}\n",
+          "exact_match": false
+        },
+        {
+          "step": 3,
+          "prompt": "Your goal is to: Create a new contact for Camila Martin. Their number is +12639585420.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    - Internet,AndroidWifi\n- Bluetooth.\n- Do Not Disturb.\n- Silent\n- Clear all silent notifications\n- Manage\n- Clear all notifications.\n- Expand\n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "CLICK(\"Create new contact\")",
+          "llm_reason": "N/A",
+          "agent_action": "{\"action_type\": \"open_app\", \"app_name\": \"contacts\"}\n",
+          "exact_match": false
+        },
+        {
+          "step": 4,
+          "prompt": "Your goal is to: Create a new contact for Camila Martin. Their number is +12639585420.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    - Create contact\n- Highlights\n- Fix & manage\n- Open navigation drawer\n- More options\n- Signed in as Device Account and settings.\n- Phone contacts\n- Email contacts\n- Company\n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "CLICK(\"Create contact\")",
+          "llm_reason": "N/A",
+          "agent_action": "CLICK(\"Create contact\")",
+          "exact_match": true
+        },
+        {
+          "step": 5,
+          "prompt": "Your goal is to: Create a new contact for Camila Martin. Their number is +12639585420.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    \n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "CLICK(\"Create new contact\")",
+          "llm_reason": "N/A",
+          "agent_action": "{\"action_type\": \"wait\"}\n",
+          "exact_match": false
+        },
+        {
+          "step": 6,
+          "prompt": "Your goal is to: Create a new contact for Camila Martin. Their number is +12639585420.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    - Cancel\n- Save\n- More options\n- Add contact photo\n- Add picture\n- First name\n- Last name\n- Company\n- Phone\n- Mobile Phone\n- Show dropdown menu\n- Email\n- Home Email\n- Significant date\n- Show date picker\n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "TYPE(\"Camila\")",
+          "llm_reason": "N/A",
+          "agent_action": "TYPE(\"Camila\")",
+          "exact_match": true
+        },
+        {
+          "step": 7,
+          "prompt": "Your goal is to: Create a new contact for Camila Martin. Their number is +12639585420.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    - Cancel\n- Save\n- More options\n- Add contact photo\n- Add picture\n- Camila\n- Last name\n- Company\n- Phone\n- Back\n- Switch input method\n- More features\n- Voice input\n- Q\n- W\n- E\n- R\n- T\n- Y\n- U\n- I\n- O\n- P\n- A\n- S\n- D\n- F\n- G\n- H\n- J\n- K\n- L\n- Shift\n- Z\n- X\n- C\n- V\n- B\n- N\n- M\n- Delete\n- Symbol keyboard\n- ,\n- Emoji button\n- Space\n- .\n- Next\n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "TYPE(\"Camila\")",
+          "llm_reason": "N/A",
+          "agent_action": "TYPE(\"Martin\")",
+          "exact_match": false
+        },
+        {
+          "step": 8,
+          "prompt": "Your goal is to: Create a new contact for Camila Martin. Their number is +12639585420.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    - Cancel\n- Save\n- More options\n- Add contact photo\n- Add picture\n- Camila\n- Martin\n- Company\n- Phone\n- Back\n- Switch input method\n- More features\n- Voice input\n- Q\n- W\n- E\n- R\n- T\n- Y\n- U\n- I\n- O\n- P\n- A\n- S\n- D\n- F\n- G\n- H\n- J\n- K\n- L\n- Shift\n- Z\n- X\n- C\n- V\n- B\n- N\n- M\n- Delete\n- Symbol keyboard\n- ,\n- Emoji button\n- Space\n- .\n- Next\n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "TYPE(\"Camila\")",
+          "llm_reason": "N/A",
+          "agent_action": "TYPE(\"+12639585420\")",
+          "exact_match": false
+        },
+        {
+          "step": 9,
+          "prompt": "Your goal is to: Create a new contact for Camila Martin. Their number is +12639585420.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    - Cancel\n- Save\n- More options\n- Add contact photo\n- Add picture\n- Camila\n- Martin\n- Company\n- +1 263-958-5420\n- Mobile Phone\n- Show dropdown menu\n- Delete Mobile Phone\n- Back\n- Switch input method\n- 1\n- 2\n- 3\n- 4\n- 5\n- 6\n- 7\n- 8\n- 9\n- 0\n- q\n- w\n- e\n- r\n- t\n- y\n- u\n- i\n- o\n- p\n- a\n- s\n- d\n- f\n- g\n- h\n- j\n- k\n- l\n- Shift\n- z\n- x\n- c\n- v\n- b\n- n\n- m\n- Delete\n- Symbol keyboard\n- ,\n- Space\n- .\n- Enter\n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "CLICK(\"Save\")",
+          "llm_reason": "N/A",
+          "agent_action": "CLICK(\"Save\")",
+          "exact_match": true
+        },
+        {
+          "step": 10,
+          "prompt": "Your goal is to: Create a new contact for Camila Martin. Their number is +12639585420.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    - Back\n- Switch input method\n- 1\n- 2\n- 3\n- 4\n- 5\n- 6\n- 7\n- 8\n- 9\n- 0\n- q\n- w\n- e\n- r\n- t\n- y\n- u\n- i\n- o\n- p\n- a\n- s\n- d\n- f\n- g\n- h\n- j\n- k\n- l\n- Shift\n- z\n- x\n- c\n- v\n- b\n- n\n- m\n- Delete\n- Symbol keyboard\n- ,\n- Space\n- .\n- Enter\n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "CLICK(\"1\")",
+          "llm_reason": "N/A",
+          "agent_action": "{\"action_type\": \"status\", \"goal_status\": \"complete\"}\n",
+          "exact_match": false
+        }
+      ],
+      "success": true,
+      "step_accuracy": 0.3
+    },
+    {
+      "goal": "Create a new contact for David Ahmed. Their number is +14883295422.",
+      "episode_log": [
+        {
+          "step": 1,
+          "prompt": "Your goal is to: Create a new contact for David Ahmed. Their number is +14883295422.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    \n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "CLICK(\"Create new contact\")",
+          "llm_reason": "N/A",
+          "agent_action": "{\"action_type\": \"open_app\", \"app_name\": \"contacts\"}\n",
+          "exact_match": false
+        },
+        {
+          "step": 2,
+          "prompt": "Your goal is to: Create a new contact for David Ahmed. Their number is +14883295422.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    \n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "CLICK(\"Create new contact\")",
+          "llm_reason": "N/A",
+          "agent_action": "{\"action_type\": \"scroll\", \"direction\": \"down\"}\n",
+          "exact_match": false
+        },
+        {
+          "step": 3,
+          "prompt": "Your goal is to: Create a new contact for David Ahmed. Their number is +14883295422.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    - Create contact\n- Highlights\n- Fix & manage\n- Open navigation drawer\n- Signed in as Device Account and settings.\n- Phone contacts\n- Email contacts\n- Company\n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "CLICK(\"Create contact\")",
+          "llm_reason": "N/A",
+          "agent_action": "CLICK(\"Create contact\")",
+          "exact_match": true
+        },
+        {
+          "step": 4,
+          "prompt": "Your goal is to: Create a new contact for David Ahmed. Their number is +14883295422.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    \n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "CLICK(\"Create new contact\")",
+          "llm_reason": "N/A",
+          "agent_action": "{\"action_type\": \"scroll\", \"direction\": \"down\"}\n",
+          "exact_match": false
+        },
+        {
+          "step": 5,
+          "prompt": "Your goal is to: Create a new contact for David Ahmed. Their number is +14883295422.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    - Cancel\n- Save\n- More options\n- Add picture\n- First name\n- Last name\n- Company\n- Phone\n- Mobile Phone\n- Show dropdown menu\n- Email\n- Home Email\n- Significant date\n- Show date picker\n- Birthday Special date\n- More fields\n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "TYPE(\"David\")",
+          "llm_reason": "N/A",
+          "agent_action": "TYPE(\"David\")",
+          "exact_match": true
+        },
+        {
+          "step": 6,
+          "prompt": "Your goal is to: Create a new contact for David Ahmed. Their number is +14883295422.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    - Cancel\n- Save\n- More options\n- Add picture\n- David\n- Last name\n- Company\n- Phone\n- Mobile Phone\n- Show dropdown menu\n- Email\n- Back\n- Switch input method\n- More features\n- Voice input\n- Q\n- W\n- E\n- R\n- T\n- Y\n- U\n- I\n- O\n- P\n- A\n- S\n- D\n- F\n- G\n- H\n- J\n- K\n- L\n- Shift\n- Z\n- X\n- C\n- V\n- B\n- N\n- M\n- Delete\n- Symbol keyboard\n- ,\n- Emoji button\n- Space\n- .\n- Next\n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "TYPE(\"David\")",
+          "llm_reason": "N/A",
+          "agent_action": "TYPE(\"Ahmed\")",
+          "exact_match": false
+        },
+        {
+          "step": 7,
+          "prompt": "Your goal is to: Create a new contact for David Ahmed. Their number is +14883295422.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    - Cancel\n- Save\n- More options\n- Add picture\n- David\n- Ahmed\n- Company\n- Phone\n- Mobile Phone\n- Show dropdown menu\n- Email\n- Back\n- Switch input method\n- More features\n- Voice input\n- Q\n- W\n- E\n- R\n- T\n- Y\n- U\n- I\n- O\n- P\n- A\n- S\n- D\n- F\n- G\n- H\n- J\n- K\n- L\n- Shift\n- Z\n- X\n- C\n- V\n- B\n- N\n- M\n- Delete\n- Symbol keyboard\n- ,\n- Emoji button\n- Space\n- .\n- Next\n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "TYPE(\"+14883295422\")",
+          "llm_reason": "N/A",
+          "agent_action": "TYPE(\"+14883295422\")",
+          "exact_match": true
+        },
+        {
+          "step": 8,
+          "prompt": "Your goal is to: Create a new contact for David Ahmed. Their number is +14883295422.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    - Cancel\n- Save\n- More options\n- Add picture\n- David\n- Ahmed\n- Company\n- +1 488-329-5422\n- Mobile Phone\n- Show dropdown menu\n- Delete Mobile Phone\n- Phone\n- Back\n- Switch input method\n- 1\n- 2\n- 3\n- 4\n- 5\n- 6\n- 7\n- 8\n- 9\n- 0\n- q\n- w\n- e\n- r\n- t\n- y\n- u\n- i\n- o\n- p\n- a\n- s\n- d\n- f\n- g\n- h\n- j\n- k\n- l\n- Shift\n- z\n- x\n- c\n- v\n- b\n- n\n- m\n- Delete\n- Symbol keyboard\n- ,\n- Space\n- .\n- Enter\n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "CLICK(\"Save\")",
+          "llm_reason": "N/A",
+          "agent_action": "CLICK(\"Save\")",
+          "exact_match": true
+        },
+        {
+          "step": 9,
+          "prompt": "Your goal is to: Create a new contact for David Ahmed. Their number is +14883295422.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    \n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "CLICK(\"Create new contact\")",
+          "llm_reason": "N/A",
+          "agent_action": "N/A",
+          "exact_match": false
+        },
+        {
+          "step": 10,
+          "prompt": "Your goal is to: Create a new contact for David Ahmed. Their number is +14883295422.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    \n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "CLICK(\"Create new contact\")",
+          "llm_reason": "N/A",
+          "agent_action": "N/A",
+          "exact_match": false
+        },
+        {
+          "step": 11,
+          "prompt": "Your goal is to: Create a new contact for David Ahmed. Their number is +14883295422.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    \n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "CLICK(\"Create new contact\")",
+          "llm_reason": "N/A",
+          "agent_action": "N/A",
+          "exact_match": false
+        },
+        {
+          "step": 12,
+          "prompt": "Your goal is to: Create a new contact for David Ahmed. Their number is +14883295422.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    \n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "CLICK(\"Create new contact\")",
+          "llm_reason": "N/A",
+          "agent_action": "N/A",
+          "exact_match": false
+        },
+        {
+          "step": 13,
+          "prompt": "Your goal is to: Create a new contact for David Ahmed. Their number is +14883295422.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    \n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "CLICK(\"Create new contact\")",
+          "llm_reason": "N/A",
+          "agent_action": "N/A",
+          "exact_match": false
+        },
+        {
+          "step": 14,
+          "prompt": "Your goal is to: Create a new contact for David Ahmed. Their number is +14883295422.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    \n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "CLICK(\"Create new contact\")",
+          "llm_reason": "N/A",
+          "agent_action": "N/A",
+          "exact_match": false
+        },
+        {
+          "step": 15,
+          "prompt": "Your goal is to: Create a new contact for David Ahmed. Their number is +14883295422.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    \n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "CLICK(\"Create new contact\")",
+          "llm_reason": "N/A",
+          "agent_action": "{\"action_type\": \"navigate_back\"}\n",
+          "exact_match": false
+        }
+      ],
+      "success": false,
+      "step_accuracy": 0.26666666666666666
+    },
+    {
+      "goal": "Create a new contact for Thiago Mohamed. Their number is +14391670831.",
+      "episode_log": [
+        {
+          "step": 1,
+          "prompt": "Your goal is to: Create a new contact for Thiago Mohamed. Their number is +14391670831.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    - Close app\n- Wait\n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "CLICK(\"Add contact\") (Not explicitly listed, but necessary to add a contact.)",
+          "llm_reason": "N/A",
+          "agent_action": "{\"action_type\": \"wait\"}\n",
+          "exact_match": false
+        },
+        {
+          "step": 2,
+          "prompt": "Your goal is to: Create a new contact for Thiago Mohamed. Their number is +14391670831.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    - Close app\n- Wait\n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "CLICK(\"Create new contact\")",
+          "llm_reason": "N/A",
+          "agent_action": "CLICK(\"Close app\")",
+          "exact_match": false
+        },
+        {
+          "step": 3,
+          "prompt": "Your goal is to: Create a new contact for Thiago Mohamed. Their number is +14391670831.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    - Close app\n- Wait\n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "CLICK(\"Close app\")",
+          "llm_reason": "N/A",
+          "agent_action": "{\"action_type\": \"wait\"}\n",
+          "exact_match": false
+        },
+        {
+          "step": 4,
+          "prompt": "Your goal is to: Create a new contact for Thiago Mohamed. Their number is +14391670831.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    - Close app\n- Wait\n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "CLICK(\"Add contact\") (Not explicitly listed, but this is the necessary action to create a new contact)",
+          "llm_reason": "N/A",
+          "agent_action": "CLICK(\"Close app\")",
+          "exact_match": false
+        },
+        {
+          "step": 5,
+          "prompt": "Your goal is to: Create a new contact for Thiago Mohamed. Their number is +14391670831.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    - Close app\n- Wait\n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "CLICK(\"Close app\")",
+          "llm_reason": "N/A",
+          "agent_action": "CLICK(\"Close app\")",
+          "exact_match": true
+        },
+        {
+          "step": 6,
+          "prompt": "Your goal is to: Create a new contact for Thiago Mohamed. Their number is +14391670831.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    - Close app\n- Wait\n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "CLICK(\"Close app\")",
+          "llm_reason": "N/A",
+          "agent_action": "{\"action_type\": \"wait\"}\n",
+          "exact_match": false
+        },
+        {
+          "step": 7,
+          "prompt": "Your goal is to: Create a new contact for Thiago Mohamed. Their number is +14391670831.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    - Close app\n- Wait\n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "CLICK(\"Create new contact\")",
+          "llm_reason": "N/A",
+          "agent_action": "CLICK(\"Close app\")",
+          "exact_match": false
+        },
+        {
+          "step": 8,
+          "prompt": "Your goal is to: Create a new contact for Thiago Mohamed. Their number is +14391670831.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    - Close app\n- Wait\n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "CLICK(\"Close app\")",
+          "llm_reason": "N/A",
+          "agent_action": "{\"action_type\": \"status\", \"goal_status\": \"infeasible\"}\n",
+          "exact_match": false
+        }
+      ],
+      "success": false,
+      "step_accuracy": 0.125
+    },
+    {
+      "goal": "Create a new contact for Emil Li. Their number is +12337662738.",
+      "episode_log": [
+        {
+          "step": 1,
+          "prompt": "Your goal is to: Create a new contact for Emil Li. Their number is +12337662738.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    - Phone\n- Messages\n- Chrome\n- Predicted app: Gmail\n- Search\n- Sun, Oct 15\n- Gmail\n- Photos\n- YouTube\n- Google app\n- Voice search\n- Google Lens\n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "CLICK(\"Phone\")",
+          "llm_reason": "N/A",
+          "agent_action": "{\"action_type\": \"open_app\", \"app_name\": \"Phone\"}\n",
+          "exact_match": false
+        },
+        {
+          "step": 2,
+          "prompt": "Your goal is to: Create a new contact for Emil Li. Their number is +12337662738.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    \n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "CLICK(\"Create new contact\")",
+          "llm_reason": "N/A",
+          "agent_action": "{\"action_type\": \"scroll\", \"direction\": \"down\"}\n",
+          "exact_match": false
+        },
+        {
+          "step": 3,
+          "prompt": "Your goal is to: Create a new contact for Emil Li. Their number is +12337662738.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    - Create new contact\n- key pad\n- Favorites\n- Recents\n- Voicemail\n- Start voice search\n- More options\n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "CLICK(\"Create new contact\")",
+          "llm_reason": "N/A",
+          "agent_action": "CLICK(\"Create new contact\")",
+          "exact_match": true
+        },
+        {
+          "step": 4,
+          "prompt": "Your goal is to: Create a new contact for Emil Li. Their number is +12337662738.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    - Create new contact\n- key pad\n- Favorites\n- Recents\n- Voicemail\n- Start voice search\n- More options\n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "CLICK(\"Create new contact\")",
+          "llm_reason": "N/A",
+          "agent_action": "CLICK(\"Create new contact\")",
+          "exact_match": true
+        },
+        {
+          "step": 5,
+          "prompt": "Your goal is to: Create a new contact for Emil Li. Their number is +12337662738.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    - Cancel\n- Save\n- More options\n- Add contact photo\n- Add picture\n- First name\n- Last name\n- Company\n- Phone\n- Mobile Phone\n- Show dropdown menu\n- Email\n- Home Email\n- Significant date\n- Show date picker\n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "TYPE(\"Emil\")",
+          "llm_reason": "N/A",
+          "agent_action": "TYPE(\"Emil\")",
+          "exact_match": true
+        },
+        {
+          "step": 6,
+          "prompt": "Your goal is to: Create a new contact for Emil Li. Their number is +12337662738.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    - Cancel\n- Save\n- More options\n- Add contact photo\n- Add picture\n- EEmil\n- Last name\n- Company\n- Phone\n- Back\n- Switch input method\n- More features\n- Sticker Keyboard\n- GIF Keyboard\n- Clipboard\n- Settings\n- Theme settings\n- Voice input\n- Q\n- W\n- E\n- R\n- T\n- Y\n- U\n- I\n- O\n- P\n- A\n- S\n- D\n- F\n- G\n- H\n- J\n- K\n- L\n- Shift\n- Z\n- X\n- C\n- V\n- B\n- N\n- M\n- Delete\n- Symbol keyboard\n- ,\n- Emoji button\n- Space\n- .\n- Next\n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "TYPE(\"Emil Li\")",
+          "llm_reason": "N/A",
+          "agent_action": "CLICK(\"EEmil\")",
+          "exact_match": false
+        },
+        {
+          "step": 7,
+          "prompt": "Your goal is to: Create a new contact for Emil Li. Their number is +12337662738.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    - Cancel\n- Save\n- More options\n- Add contact photo\n- Add picture\n- EEmil\n- Last name\n- Company\n- Phone\n- Back\n- Switch input method\n- More features\n- Emil\n- Emily\n- Voice input\n- q\n- w\n- e\n- r\n- t\n- y\n- u\n- i\n- o\n- p\n- a\n- s\n- d\n- f\n- g\n- h\n- j\n- k\n- l\n- Shift\n- z\n- x\n- c\n- v\n- b\n- n\n- m\n- Delete\n- Symbol keyboard\n- ,\n- Emoji button\n- Space\n- .\n- Next\n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "TYPE(\"Emil Li\")",
+          "llm_reason": "N/A",
+          "agent_action": "CLICK(\"Emil\")",
+          "exact_match": false
+        },
+        {
+          "step": 8,
+          "prompt": "Your goal is to: Create a new contact for Emil Li. Their number is +12337662738.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    - Cancel\n- Save\n- More options\n- Add contact photo\n- Add picture\n- Emil\n- Last name\n- Company\n- Phone\n- Back\n- Switch input method\n- More features\n- And\n- I\n- Is\n- Voice input\n- Q\n- W\n- E\n- R\n- T\n- Y\n- U\n- O\n- P\n- A\n- S\n- D\n- F\n- G\n- H\n- J\n- K\n- L\n- Shift\n- Z\n- X\n- C\n- V\n- B\n- N\n- M\n- Delete\n- Symbol keyboard\n- ,\n- Emoji button\n- Space\n- .\n- Next\n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "TYPE(\"Emil\")",
+          "llm_reason": "N/A",
+          "agent_action": "TYPE(\"Li\")",
+          "exact_match": false
+        },
+        {
+          "step": 9,
+          "prompt": "Your goal is to: Create a new contact for Emil Li. Their number is +12337662738.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    - Cancel\n- Save\n- More options\n- Add contact photo\n- Add picture\n- Emil\n- Li\n- Company\n- Phone\n- Back\n- Switch input method\n- More features\n- Sticker Keyboard\n- GIF Keyboard\n- Clipboard\n- Settings\n- Theme settings\n- Voice input\n- Q\n- W\n- E\n- R\n- T\n- Y\n- U\n- I\n- O\n- P\n- A\n- S\n- D\n- F\n- G\n- H\n- J\n- K\n- L\n- Shift\n- Z\n- X\n- C\n- V\n- B\n- N\n- M\n- Delete\n- Symbol keyboard\n- ,\n- Emoji button\n- Space\n- .\n- Next\n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "CLICK(\"Phone\")",
+          "llm_reason": "N/A",
+          "agent_action": "{\"action_type\": \"scroll\", \"direction\": \"down\"}\n",
+          "exact_match": false
+        },
+        {
+          "step": 10,
+          "prompt": "Your goal is to: Create a new contact for Emil Li. Their number is +12337662738.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    - Cancel\n- Save\n- More options\n- Phone\n- Mobile Phone\n- Show dropdown menu\n- Email\n- Home Email\n- Significant date\n- Show date picker\n- Birthday Special date\n- More fields\n- Back\n- Switch input method\n- More features\n- Sticker Keyboard\n- GIF Keyboard\n- Clipboard\n- Settings\n- Theme settings\n- Voice input\n- Q\n- W\n- E\n- R\n- T\n- Y\n- U\n- I\n- O\n- P\n- A\n- S\n- D\n- F\n- G\n- H\n- J\n- K\n- L\n- Shift\n- Z\n- X\n- C\n- V\n- B\n- N\n- M\n- Delete\n- Symbol keyboard\n- ,\n- Emoji button\n- Space\n- .\n- Next\n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "CLICK(\"Phone\")",
+          "llm_reason": "N/A",
+          "agent_action": "TYPE(\"+12337662738\")",
+          "exact_match": false
+        },
+        {
+          "step": 11,
+          "prompt": "Your goal is to: Create a new contact for Emil Li. Their number is +12337662738.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    - Cancel\n- Save\n- More options\n- +1 233-766-2738\n- Mobile Phone\n- Show dropdown menu\n- Delete Mobile Phone\n- Phone\n- Home Phone\n- Email\n- Home Email\n- Significant date\n- Show date picker\n- Back\n- Switch input method\n- 1\n- 2\n- 3\n- 4\n- 5\n- 6\n- 7\n- 8\n- 9\n- 0\n- q\n- w\n- e\n- r\n- t\n- y\n- u\n- i\n- o\n- p\n- a\n- s\n- d\n- f\n- g\n- h\n- j\n- k\n- l\n- Shift\n- z\n- x\n- c\n- v\n- b\n- n\n- m\n- Delete\n- Symbol keyboard\n- ,\n- Space\n- .\n- Enter\n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "TYPE(\"Emil Li\")",
+          "llm_reason": "N/A",
+          "agent_action": "CLICK(\"Save\")",
+          "exact_match": false
+        },
+        {
+          "step": 12,
+          "prompt": "Your goal is to: Create a new contact for Emil Li. Their number is +12337662738.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    - Cancel\n- Save\n- More options\n- +1 233-766-2738\n- Mobile Phone\n- Show dropdown menu\n- Delete Mobile Phone\n- Phone\n- Home Phone\n- Email\n- Home Email\n- Significant date\n- Show date picker\n- Back\n- Switch input method\n- 1\n- 2\n- 3\n- 4\n- 5\n- 6\n- 7\n- 8\n- 9\n- 0\n- q\n- w\n- e\n- r\n- t\n- y\n- u\n- i\n- o\n- p\n- a\n- s\n- d\n- f\n- g\n- h\n- j\n- k\n- l\n- Shift\n- z\n- x\n- c\n- v\n- b\n- n\n- m\n- Delete\n- Symbol keyboard\n- ,\n- Space\n- .\n- Enter\n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "TYPE(\"Emil Li\")",
+          "llm_reason": "N/A",
+          "agent_action": "CLICK(\"Save\")",
+          "exact_match": false
+        },
+        {
+          "step": 13,
+          "prompt": "Your goal is to: Create a new contact for Emil Li. Their number is +12337662738.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    - key pad\n- Favorites\n- Recents\n- Voicemail\n- Start voice search\n- More options\n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "CLICK(\"key pad\")",
+          "llm_reason": "N/A",
+          "agent_action": "{\"action_type\": \"status\", \"goal_status\": \"complete\"}\n",
+          "exact_match": false
+        }
+      ],
+      "success": true,
+      "step_accuracy": 0.23076923076923078
+    },
+    {
+      "goal": "Create a new contact for Nora da Silva. Their number is +10677849313.",
+      "episode_log": [
+        {
+          "step": 1,
+          "prompt": "Your goal is to: Create a new contact for Nora da Silva. Their number is +10677849313.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    - key pad\n- Favorites\n- Recents\n- Voicemail\n- Start voice search\n- More options\n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "CLICK(\"key pad\")",
+          "llm_reason": "N/A",
+          "agent_action": "CLICK(\"Create new contact\")",
+          "exact_match": false
+        },
+        {
+          "step": 2,
+          "prompt": "Your goal is to: Create a new contact for Nora da Silva. Their number is +10677849313.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    \n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "CLICK(\"Create new contact\")",
+          "llm_reason": "N/A",
+          "agent_action": "{\"action_type\": \"navigate_home\"}\n",
+          "exact_match": false
+        },
+        {
+          "step": 3,
+          "prompt": "Your goal is to: Create a new contact for Nora da Silva. Their number is +10677849313.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    - Phone\n- Messages\n- Chrome\n- Predicted app: Gmail\n- Search\n- Sun, Oct 15\n- Gmail\n- Photos\n- YouTube\n- Google app\n- Voice search\n- Google Lens\n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "CLICK(\"Phone\")",
+          "llm_reason": "N/A",
+          "agent_action": "CLICK(\"Phone\")",
+          "exact_match": true
+        },
+        {
+          "step": 4,
+          "prompt": "Your goal is to: Create a new contact for Nora da Silva. Their number is +10677849313.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    \n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "CLICK(\"Create new contact\")",
+          "llm_reason": "N/A",
+          "agent_action": "{\"action_type\": \"wait\"}\n",
+          "exact_match": false
+        },
+        {
+          "step": 5,
+          "prompt": "Your goal is to: Create a new contact for Nora da Silva. Their number is +10677849313.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    \n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "CLICK(\"Create new contact\")",
+          "llm_reason": "N/A",
+          "agent_action": "{\"action_type\": \"navigate_home\"}\n",
+          "exact_match": false
+        },
+        {
+          "step": 6,
+          "prompt": "Your goal is to: Create a new contact for Nora da Silva. Their number is +10677849313.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    \n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "CLICK(\"Create new contact\")",
+          "llm_reason": "N/A",
+          "agent_action": "{\"action_type\": \"open_app\", \"app_name\": \"Contacts\"}\n",
+          "exact_match": false
+        },
+        {
+          "step": 7,
+          "prompt": "Your goal is to: Create a new contact for Nora da Silva. Their number is +10677849313.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    \n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "CLICK(\"Create new contact\")",
+          "llm_reason": "N/A",
+          "agent_action": "{\"action_type\": \"scroll\", \"direction\": \"down\"}\n",
+          "exact_match": false
+        },
+        {
+          "step": 8,
+          "prompt": "Your goal is to: Create a new contact for Nora da Silva. Their number is +10677849313.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    - Create contact\n- Highlights\n- Fix & manage\n- Open navigation drawer\n- Signed in as Device Account and settings.\n- Phone contacts\n- Email contacts\n- Company\n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "CLICK(\"Create contact\")",
+          "llm_reason": "N/A",
+          "agent_action": "CLICK(\"Create contact\")",
+          "exact_match": true
+        },
+        {
+          "step": 9,
+          "prompt": "Your goal is to: Create a new contact for Nora da Silva. Their number is +10677849313.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    - Create contact\n- Highlights\n- Fix & manage\n- Open navigation drawer\n- Signed in as Device Account and settings.\n- Phone contacts\n- Email contacts\n- Company\n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "CLICK(\"Create contact\")",
+          "llm_reason": "N/A",
+          "agent_action": "CLICK(\"Create contact\")",
+          "exact_match": true
+        },
+        {
+          "step": 10,
+          "prompt": "Your goal is to: Create a new contact for Nora da Silva. Their number is +10677849313.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    \n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "CLICK(\"Create new contact\")",
+          "llm_reason": "N/A",
+          "agent_action": "{\"action_type\": \"navigate_home\"}\n",
+          "exact_match": false
+        },
+        {
+          "step": 11,
+          "prompt": "Your goal is to: Create a new contact for Nora da Silva. Their number is +10677849313.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    \n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "CLICK(\"Create new contact\")",
+          "llm_reason": "N/A",
+          "agent_action": "{\"action_type\": \"open_app\", \"app_name\": \"Contacts\"}\n",
+          "exact_match": false
+        },
+        {
+          "step": 12,
+          "prompt": "Your goal is to: Create a new contact for Nora da Silva. Their number is +10677849313.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    - Cancel\n- Save\n- More options\n- Add contact photo\n- Add picture\n- First name\n- Last name\n- Company\n- Phone\n- Mobile Phone\n- Show dropdown menu\n- Email\n- Home Email\n- Significant date\n- Show date picker\n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "TYPE(\"Nora\")",
+          "llm_reason": "N/A",
+          "agent_action": "TYPE(\"Nora\")",
+          "exact_match": true
+        },
+        {
+          "step": 13,
+          "prompt": "Your goal is to: Create a new contact for Nora da Silva. Their number is +10677849313.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    - Cancel\n- Save\n- More options\n- Add contact photo\n- Add picture\n- Nora\n- Last name\n- Company\n- Phone\n- Back\n- Switch input method\n- More features\n- Sticker Keyboard\n- GIF Keyboard\n- Clipboard\n- Settings\n- Theme settings\n- Voice input\n- Q\n- W\n- E\n- R\n- T\n- Y\n- U\n- I\n- O\n- P\n- A\n- S\n- D\n- F\n- G\n- H\n- J\n- K\n- L\n- Shift\n- Z\n- X\n- C\n- V\n- B\n- N\n- M\n- Delete\n- Symbol keyboard\n- ,\n- Emoji button\n- Space\n- .\n- Next\n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "TYPE(\"Nora da Silva\")",
+          "llm_reason": "N/A",
+          "agent_action": "TYPE(\"da Silva\")",
+          "exact_match": false
+        },
+        {
+          "step": 14,
+          "prompt": "Your goal is to: Create a new contact for Nora da Silva. Their number is +10677849313.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    - Cancel\n- Save\n- More options\n- Add contact photo\n- Add picture\n- Nora\n- da Silva\n- Company\n- Phone\n- Back\n- Switch input method\n- More features\n- Sticker Keyboard\n- GIF Keyboard\n- Clipboard\n- Settings\n- Theme settings\n- Voice input\n- Q\n- W\n- E\n- R\n- T\n- Y\n- U\n- I\n- O\n- P\n- A\n- S\n- D\n- F\n- G\n- H\n- J\n- K\n- L\n- Shift\n- Z\n- X\n- C\n- V\n- B\n- N\n- M\n- Delete\n- Symbol keyboard\n- ,\n- Emoji button\n- Space\n- .\n- Next\n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "TYPE(\"+10677849313\")",
+          "llm_reason": "N/A",
+          "agent_action": "TYPE(\"+10677849313\")",
+          "exact_match": true
+        },
+        {
+          "step": 15,
+          "prompt": "Your goal is to: Create a new contact for Nora da Silva. Their number is +10677849313.\n\nCurrent screen:\n\n    App: Contacts\n\n    UI Elements:\n    - Cancel\n- Save\n- More options\n- Add contact photo\n- Add picture\n- Nora\n- da Silva\n- Company\n- +10677849313\n- Mobile Phone\n- Show dropdown menu\n- Delete Mobile Phone\n- Back\n- Switch input method\n- 1\n- 2\n- 3\n- 4\n- 5\n- 6\n- 7\n- 8\n- 9\n- 0\n- q\n- w\n- e\n- r\n- t\n- y\n- u\n- i\n- o\n- p\n- a\n- s\n- d\n- f\n- g\n- h\n- j\n- k\n- l\n- Shift\n- z\n- x\n- c\n- v\n- b\n- n\n- m\n- Delete\n- Symbol keyboard\n- ,\n- Space\n- .\n- Enter\n\nWhat is the single best next action? Respond in the format: CLICK(\"element_text\") or TYPE(\"text_to_type\")",
+          "llm_action": "CLICK(\"Save\")",
+          "llm_reason": "N/A",
+          "agent_action": "CLICK(\"Save\")",
+          "exact_match": true
+        }
+      ],
+      "success": true,
+      "step_accuracy": 0.4
+    }
+  ]
+}

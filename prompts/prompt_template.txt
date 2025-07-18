@@ -1,0 +1,10 @@
+Your goal is to: {goal}
+
+Current screen:
+
+    App: {app_name}
+
+    UI Elements:
+    {ui_elements}
+
+{instruction}

@@ -1,0 +1,36 @@
+---
+Goal: Open the Clock app
+Observation:
+- App: Home Screen
+- UI Elements:
+- "Phone"
+- "Messages"
+- "Clock"
+- "Camera"
+
+What is the single best next action? Respond in the format: CLICK("element_text") or TYPE("text_to_type")
+CLICK("Clock")
+---
+Goal: Search for a wifi network
+Observation:
+- App: Settings
+- UI Elements:
+- "Network & internet"
+- "Connected devices"
+- "Apps"
+
+What is the single best next action? Respond in the format: CLICK("element_text") or TYPE("text_to_type")
+CLICK("Network & internet")
+---
+Goal: Find the "About phone" section
+Observation:
+- App: Settings
+- UI Elements:
+- "Network"
+- "Display"
+- "Storage"
+- "Security"
+
+What is the single best next action? Respond in the format: CLICK("element_text") or TYPE("text_to_type")
+SCROLL("down")
+---
