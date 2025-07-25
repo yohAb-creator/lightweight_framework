@@ -1,4 +1,3 @@
-# arpo_runner.py
 import os
 import re
 import random
@@ -35,22 +34,25 @@ logging.set_verbosity(logging.WARNING)
 FLAGS = flags.FLAGS
 
 # --- Flag Definitions ---
-flags.DEFINE_string('task_name', 'ContactsAddContact', 'The android_world task to use for the RL training loop.')
-flags.DEFINE_integer('num_arpo_iterations', 10, 'Number of RL iterations (episodes) to run for ARPO.')
-flags.DEFINE_integer('num_benchmark_episodes', 5, 'Number of episodes to run for the final benchmark.')
+flags.DEFINE_string('task_name', 'ContactsAddContact', 'A representative android_world task to use for Text2Grad.')
+# MR. TERRIFIC'S FIX: Changed to iterations per task for a more structured curriculum.
+flags.DEFINE_integer('num_training_iterations_per_task', 10,
+                     'Number of RL iterations to run for each task in the training set.')
+flags.DEFINE_integer('num_benchmark_episodes', 3,
+                     'Number of episodes to run for each task in the final benchmark.')
 flags.DEFINE_string('gcp_api_key', os.environ.get("GCP_API_KEY"), 'Your Google Cloud API Key.')
 flags.DEFINE_string('adb_path', "C:\\Users\\yohan\\AppData\\Local\\Android\\Sdk\\platform-tools\\adb.exe",
                     'Path to ADB.')
 flags.DEFINE_integer('console_port', 5554, 'Emulator console port.')
 flags.DEFINE_integer('grpc_port', 8554, 'Emulator gRPC port.')
-flags.DEFINE_integer('max_steps_per_episode', 20, 'Maximum steps for the agent in each episode.')
+flags.DEFINE_integer('max_steps_per_episode', 25, 'Maximum steps for the agent in each episode.')
 
 
 def get_llm_response(prompt: str) -> str:
     """Generic wrapper to call the LLM."""
     if not FLAGS.gcp_api_key:
         return "ERROR: API Key not set"
-    llm = infer.GeminiGcpWrapper('gemini-2.5-pro')
+    llm = infer.GeminiGcpWrapper('gemini-1.5-pro-latest')
     response, _, _ = llm.predict(prompt)
     return response
 
@@ -208,35 +210,57 @@ def run_episode_for_reward_and_accuracy(prompt_policy: str, task_class) -> Tuple
 
 
 def are_actions_equivalent(our_action_dict, expert_action_dict, ui_elements):
-
+    """
+    MR. TERRIFIC'S FIX: A more intelligent function to check if two actions are semantically the same,
+    even if the indices or action formats are different.
+    """
     if not our_action_dict or not expert_action_dict:
         return False
 
-    if our_action_dict.get("action_type") != expert_action_dict.get("action_type"):
+    our_action_type = our_action_dict.get("action_type")
+    expert_action_type = expert_action_dict.get("action_type")
+
+    if our_action_type != expert_action_type:
         return False
 
-    action_type = our_action_dict.get("action_type")
+    # Universal actions
+    if expert_action_type in ["status", "navigate_back", "navigate_home"]:
+        return our_action_dict == expert_action_dict
 
-    if action_type == "status":
-        return our_action_dict.get("goal_status") == expert_action_dict.get("goal_status")
+    # Click actions
+    if expert_action_type == "click":
+        our_idx = our_action_dict.get("index")
+        expert_idx = expert_action_dict.get("index")
 
-    if action_type == "click":
-        # If our agent found an index, compare it directly
-        if "index" in our_action_dict:
-            return our_action_dict["index"] == expert_action_dict.get("index")
-        # If our agent used text, check if that text matches the expert's indexed element
-        elif "target_text" in our_action_dict and "index" in expert_action_dict:
-            expert_index = expert_action_dict["index"]
-            if expert_index < len(ui_elements):
-                expert_element_text = (ui_elements[expert_index].content_description or ui_elements[
-                    expert_index].text or "").strip()
-                return our_action_dict["target_text"].lower() == expert_element_text.lower()
+        if our_idx is not None and expert_idx is not None:
+            # If indices are the same, they are equivalent.
+            if our_idx == expert_idx:
+                return True
+            # If indices are different, check if they point to the same element text.
+            if our_idx < len(ui_elements) and expert_idx < len(ui_elements):
+                our_text = (ui_elements[our_idx].content_description or ui_elements[our_idx].text or "").strip().lower()
+                expert_text = (ui_elements[expert_idx].content_description or ui_elements[
+                    expert_idx].text or "").strip().lower()
+                if our_text and our_text == expert_text:
+                    return True
 
-    if action_type == "input_text":
+        # Fallback if our agent used text and expert used index
+        if "target_text" in our_action_dict and expert_idx is not None:
+            if expert_idx < len(ui_elements):
+                expert_text = (ui_elements[expert_idx].content_description or ui_elements[
+                    expert_idx].text or "").strip().lower()
+                if our_action_dict["target_text"].lower() == expert_text:
+                    return True
+
+    # Type actions
+    if expert_action_type == "input_text":
         return our_action_dict.get("text") == expert_action_dict.get("text")
 
-    # Add more comparisons for other action types (scroll, etc.) if needed
-    return False
+    # Scroll actions
+    if expert_action_type == "scroll":
+        return our_action_dict.get("direction") == expert_action_dict.get("direction")
+
+    return False  # Default to not equivalent
 
 
 def run_episode_for_benchmark_accuracy(prompt_policy: str, task_class) -> Tuple[float, bool]:
@@ -251,7 +275,7 @@ def run_episode_for_benchmark_accuracy(prompt_policy: str, task_class) -> Tuple[
         task_instance.initialize_task(env)
         time.sleep(2)
 
-        expert_agent = t3a.T3A(env, infer.GeminiGcpWrapper('gemini-2.5-pro'))
+        expert_agent = t3a.T3A(env, infer.GeminiGcpWrapper('gemini-1.5-pro-latest'))
         episode_log = []
         is_done = False
 
@@ -329,29 +353,75 @@ def main(argv):
 
     task_registry = registry.TaskRegistry()
     aw_registry = task_registry.get_registry(task_registry.ANDROID_WORLD_FAMILY)
-    task_class = aw_registry[FLAGS.task_name]
+
+    # --- Stage 1 & 2: Text2Grad & ARPO Training ---
+    print("\n" + "=" * 25 + " Stage 1 & 2: Text2Grad & ARPO Training " + "=" * 25)
 
     gemini_baseline_policy = "Your goal is: {goal}\nHere are the UI elements on the screen:\n{observation}\nWhat is the next action? Respond ONLY in the format: Action: CLICK(\"element_text\")."
     text2grad_policy = run_text2grad_optimization()
 
-    print("\n" + "=" * 25 + " Stage 3: Starting ARPO Training Loop " + "=" * 25)
+    # MR. TERRIFIC'S FIX: Implement Structured Mixed-Task Training
+    training_task_names = [
+        'ContactsAddContact',
+        'MarkorCreateNote',
+        'SystemWifiTurnOff',
+        'ClockTimerEntry',
+        # 'ExpenseAddMultiple',
+        # 'SimpleCalendarAddOneEvent',
+        # 'SimpleCalendarAddRepeatingEvent',
+        # 'SimpleSmsSend',
+        # 'SystemBluetoothTurnOff',
+        # 'MarkorCreateNote',
+        # 'BrowserDraw'
+    ]
+    training_tasks = [aw_registry[name] for name in training_task_names if name in aw_registry]
+    if not training_tasks:
+        print("FATAL: No valid training tasks found. Exiting.")
+        return
+
     current_policy = text2grad_policy
     reward_history = []
-    for i in range(FLAGS.num_arpo_iterations):
-        print("\n" + "=" * 25 + f" ARPO Iteration {i + 1}/{FLAGS.num_arpo_iterations} " + "=" * 25)
+    total_iterations = len(training_tasks) * FLAGS.num_training_iterations_per_task
+    iteration_count = 0
 
-        reward, trajectory = run_episode_for_reward_and_accuracy(current_policy, task_class)
-        reward_history.append(reward)
+    # Iterate through each task in the training set
+    for training_task_class in training_tasks:
+        task_name = [k for k, v in aw_registry.items() if v == training_task_class][0]
+        print("\n" + "=" * 25 + f" Training on Task: '{task_name}' " + "=" * 25)
 
-        if reward < 1.0 and trajectory:
-            print("  -> Policy is suboptimal. Updating with ARPO...")
-            current_policy = arpo_update_policy(current_policy, trajectory)
-        elif reward == 1.0:
-            print("  -> Policy is optimal. Exploiting current prompt.")
-            current_policy = text2grad_policy
+        # Run the specified number of iterations for this task
+        for i in range(FLAGS.num_training_iterations_per_task):
+            iteration_count += 1
+            print(
+                f"\n--- ARPO Iteration {iteration_count}/{total_iterations} (Task: '{task_name}', Run {i + 1}/{FLAGS.num_training_iterations_per_task}) ---")
+
+            reward, trajectory = run_episode_for_reward_and_accuracy(current_policy, training_task_class)
+            reward_history.append(reward)
+            if reward < 1.0 and trajectory:
+                print("  -> Policy is suboptimal. Updating with ARPO...")
+                current_policy = arpo_update_policy(current_policy, trajectory)
+            elif reward == 1.0:
+                print("  -> Policy is optimal. Exploiting current prompt.")
+                # Reset to a clean slate to avoid accumulating too many constraints
+                current_policy = text2grad_policy
     arpo_final_policy = current_policy
 
-    print("\n" + "=" * 25 + " FINAL BENCHMARK " + "=" * 25)
+    # --- Final benchmark across an expanded set of 10 tasks ---
+    print("\n" + "=" * 25 + " FINAL MULTI-TASK BENCHMARK " + "=" * 25)
+
+    benchmark_task_names = [
+        'ContactsAddContact',
+        'BrowserDraw',
+        'SystemWifiTurnOff',
+        'ExpenseAddMultiple',
+        'SimpleCalendarAddOneEvent',
+        'SimpleCalendarAddRepeatingEvent',
+        'SimpleSmsSend',
+        'SystemBluetoothTurnOff',
+        'MarkorCreateNote',
+        'SystemBrightnessMax'
+    ]
+
     benchmark_results = {}
     policies_to_benchmark = {
         "Gemini_Baseline": gemini_baseline_policy,
@@ -360,18 +430,36 @@ def main(argv):
     }
 
     for name, policy in policies_to_benchmark.items():
-        total_successes = 0
-        total_step_accuracy = 0.0
-        for i in range(FLAGS.num_benchmark_episodes):
-            print(f"\n--- Benchmarking '{name}' | Episode {i + 1}/{FLAGS.num_benchmark_episodes} ---")
-            step_accuracy, success = run_episode_for_benchmark_accuracy(policy, task_class)
-            if success:
-                total_successes += 1
-            total_step_accuracy += step_accuracy
-        benchmark_results[name] = {
-            "Task Completion Rate": total_successes / FLAGS.num_benchmark_episodes,
-            "Action Accuracy": total_step_accuracy / FLAGS.num_benchmark_episodes
-        }
+        all_task_successes = []
+        all_task_accuracies = []
+        print(f"\n--- Benchmarking Policy: '{name}' ---")
+
+        for task_name in benchmark_task_names:
+            print(f"\n  -- Running Task: {task_name} --")
+            task_class = aw_registry.get(task_name)
+            if not task_class:
+                print(f"    - WARNING: Task '{task_name}' not found in registry. Skipping.")
+                continue
+
+            task_successes = 0
+            task_accuracies = 0.0
+            for i in range(FLAGS.num_benchmark_episodes):
+                print(f"    - Episode {i + 1}/{FLAGS.num_benchmark_episodes}")
+                step_accuracy, success = run_episode_for_benchmark_accuracy(policy, task_class)
+                if success:
+                    task_successes += 1
+                task_accuracies += step_accuracy
+
+            all_task_successes.append(task_successes / FLAGS.num_benchmark_episodes)
+            all_task_accuracies.append(task_accuracies / FLAGS.num_benchmark_episodes)
+
+        if all_task_successes:
+            benchmark_results[name] = {
+                "Task Completion Rate": sum(all_task_successes) / len(all_task_successes),
+                "Action Accuracy": sum(all_task_accuracies) / len(all_task_accuracies)
+            }
+        else:
+            benchmark_results[name] = {"Task Completion Rate": 0.0, "Action Accuracy": 0.0}
 
     print("\n" + "=" * 25 + " FINAL RESULTS " + "=" * 25)
     print("--- Interpretability: Final Prompt Policies ---")
@@ -381,13 +469,13 @@ def main(argv):
         print(policy)
         print("-" * 20)
 
-    print("\n--- Performance Metrics ---")
+    print("\n--- Performance Metrics (Averaged Across All Benchmark Tasks) ---")
     for name, results in benchmark_results.items():
         print(f"Policy: {name}")
         print(f"  -> Task Completion Rate: {results['Task Completion Rate']:.2%}")
         print(f"  -> Action Accuracy: {results['Action Accuracy']:.2%}")
 
-    print("\n--- Reward Curve (ARPO Training) ---")
+    print("\n--- Reward Curve (ARPO Mixed-Task Training) ---")
     print(reward_history)
 
     results_data = {
@@ -397,12 +485,13 @@ def main(argv):
             "arpo_optimized": arpo_final_policy
         },
         "reward_curve": reward_history,
-        "benchmark_results": benchmark_results
+        "benchmark_results": benchmark_results,
+        "benchmark_tasks": benchmark_task_names
     }
     os.makedirs("results", exist_ok=True)
-    with open("../results/arpo_full_pipeline_results.json", "w") as f:
+    with open("../results/arpo_full_pipeline_results_10tasks.json", "w") as f:
         json.dump(results_data, f, indent=2)
-    print("\nSaved final pipeline results to results/arpo_full_pipeline_results.json")
+    print("\nSaved final pipeline results to results/arpo_full_pipeline_results_10tasks.json")
 
 
 if __name__ == "__main__":
