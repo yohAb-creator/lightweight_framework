@@ -1,0 +1,33 @@
+{
+  "prompt_improvement": {
+    "gemini_baseline": "Your goal is: {goal}\nHere are the UI elements on the screen:\n{observation}\nWhat is the next action? Respond ONLY in the format: Action: CLICK(\"element_text\").",
+    "text2grad_optimized": "Your high-level goal is: {goal}\nHere is a history of your previous actions:\n{history}\nHere are the available UI elements on the current screen:\n{observation}\nBased on your history and the current screen, what is your next action? If the task is complete, respond with STATUS_COMPLETE.\nRespond ONLY in the format:\nReason: [Your reasoning here]\nAction: [Your action here in the format CLICK(\"text\"), OPEN_APP(\"App Name\"), SCROLL(\"direction\"), TYPE(\"text_to_type\", \"target_field_text\"), or STATUS_COMPLETE]",
+    "arpo_optimized": "Your high-level goal is: {goal}\nHere is a history of your previous actions:\n{history}\nHere are the available UI elements on the current screen:\n{observation}\nBased on your history and the current screen, what is your next action? If the task is complete, respond with STATUS_COMPLETE.\nRespond ONLY in the format:\nReason: [Your reasoning here]\nAction: [Your action here in the format CLICK(\"text\"), OPEN_APP(\"App Name\"), SCROLL(\"direction\"), TYPE(\"text_to_type\", \"target_field_text\"), or STATUS_COMPLETE]\n\nSTRATEGY FAILED. Your previous approach did not work. Re-read the goal carefully. Think step-by-step about a new strategy."
+  },
+  "reward_curve": [
+    0.9750000000000001,
+    0.9555555555555556,
+    0.9750000000000001,
+    0.9750000000000001,
+    0.9750000000000001,
+    0.9750000000000001,
+    0.9750000000000001,
+    0.9400000000000001,
+    1.0,
+    0.9555555555555556
+  ],
+  "benchmark_results": {
+    "Gemini_Baseline": {
+      "Task Completion Rate": 1.0,
+      "Action Accuracy": 0.3142857142857142
+    },
+    "Text2Grad_Optimized": {
+      "Task Completion Rate": 1.0,
+      "Action Accuracy": 0.8571428571428571
+    },
+    "ARPO_Optimized": {
+      "Task Completion Rate": 1.0,
+      "Action Accuracy": 0.8285714285714285
+    }
+  }
+}
