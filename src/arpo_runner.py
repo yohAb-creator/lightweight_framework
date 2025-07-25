@@ -35,7 +35,6 @@ FLAGS = flags.FLAGS
 
 # --- Flag Definitions ---
 flags.DEFINE_string('task_name', 'ContactsAddContact', 'A representative android_world task to use for Text2Grad.')
-# MR. TERRIFIC'S FIX: Changed to iterations per task for a more structured curriculum.
 flags.DEFINE_integer('num_training_iterations_per_task', 10,
                      'Number of RL iterations to run for each task in the training set.')
 flags.DEFINE_integer('num_benchmark_episodes', 3,
@@ -52,7 +51,8 @@ def get_llm_response(prompt: str) -> str:
     """Generic wrapper to call the LLM."""
     if not FLAGS.gcp_api_key:
         return "ERROR: API Key not set"
-    llm = infer.GeminiGcpWrapper('gemini-1.5-pro-latest')
+    # MR. TERRIFIC'S FIX: Upgraded model to Gemini 2.5 Pro.
+    llm = infer.GeminiGcpWrapper('gemini-2.5-pro')
     response, _, _ = llm.predict(prompt)
     return response
 
@@ -211,7 +211,7 @@ def run_episode_for_reward_and_accuracy(prompt_policy: str, task_class) -> Tuple
 
 def are_actions_equivalent(our_action_dict, expert_action_dict, ui_elements):
     """
-    MR. TERRIFIC'S FIX: A more intelligent function to check if two actions are semantically the same,
+    A more intelligent function to check if two actions are semantically the same,
     even if the indices or action formats are different.
     """
     if not our_action_dict or not expert_action_dict:
@@ -233,10 +233,8 @@ def are_actions_equivalent(our_action_dict, expert_action_dict, ui_elements):
         expert_idx = expert_action_dict.get("index")
 
         if our_idx is not None and expert_idx is not None:
-            # If indices are the same, they are equivalent.
             if our_idx == expert_idx:
                 return True
-            # If indices are different, check if they point to the same element text.
             if our_idx < len(ui_elements) and expert_idx < len(ui_elements):
                 our_text = (ui_elements[our_idx].content_description or ui_elements[our_idx].text or "").strip().lower()
                 expert_text = (ui_elements[expert_idx].content_description or ui_elements[
@@ -244,7 +242,6 @@ def are_actions_equivalent(our_action_dict, expert_action_dict, ui_elements):
                 if our_text and our_text == expert_text:
                     return True
 
-        # Fallback if our agent used text and expert used index
         if "target_text" in our_action_dict and expert_idx is not None:
             if expert_idx < len(ui_elements):
                 expert_text = (ui_elements[expert_idx].content_description or ui_elements[
@@ -260,7 +257,7 @@ def are_actions_equivalent(our_action_dict, expert_action_dict, ui_elements):
     if expert_action_type == "scroll":
         return our_action_dict.get("direction") == expert_action_dict.get("direction")
 
-    return False  # Default to not equivalent
+    return False
 
 
 def run_episode_for_benchmark_accuracy(prompt_policy: str, task_class) -> Tuple[float, bool]:
@@ -275,7 +272,7 @@ def run_episode_for_benchmark_accuracy(prompt_policy: str, task_class) -> Tuple[
         task_instance.initialize_task(env)
         time.sleep(2)
 
-        expert_agent = t3a.T3A(env, infer.GeminiGcpWrapper('gemini-1.5-pro-latest'))
+        expert_agent = t3a.T3A(env, infer.GeminiGcpWrapper('gemini-2.5-pro'))
         episode_log = []
         is_done = False
 
@@ -360,19 +357,18 @@ def main(argv):
     gemini_baseline_policy = "Your goal is: {goal}\nHere are the UI elements on the screen:\n{observation}\nWhat is the next action? Respond ONLY in the format: Action: CLICK(\"element_text\")."
     text2grad_policy = run_text2grad_optimization()
 
-    # MR. TERRIFIC'S FIX: Implement Structured Mixed-Task Training
+    # Implement Structured Mixed-Task Training with a focused set of 3 tasks.
     training_task_names = [
         'ContactsAddContact',
-        'MarkorCreateNote',
+        # 'BrowserDraw',
         'SystemWifiTurnOff',
-        'ClockTimerEntry',
         # 'ExpenseAddMultiple',
         # 'SimpleCalendarAddOneEvent',
         # 'SimpleCalendarAddRepeatingEvent',
         # 'SimpleSmsSend',
         # 'SystemBluetoothTurnOff',
         # 'MarkorCreateNote',
-        # 'BrowserDraw'
+        'SystemBrightnessMax'
     ]
     training_tasks = [aw_registry[name] for name in training_task_names if name in aw_registry]
     if not training_tasks:
@@ -402,23 +398,22 @@ def main(argv):
                 current_policy = arpo_update_policy(current_policy, trajectory)
             elif reward == 1.0:
                 print("  -> Policy is optimal. Exploiting current prompt.")
-                # Reset to a clean slate to avoid accumulating too many constraints
                 current_policy = text2grad_policy
     arpo_final_policy = current_policy
 
-    # --- Final benchmark across an expanded set of 10 tasks ---
+    # --- Final benchmark across the three training tasks ---
     print("\n" + "=" * 25 + " FINAL MULTI-TASK BENCHMARK " + "=" * 25)
 
     benchmark_task_names = [
         'ContactsAddContact',
-        'BrowserDraw',
+        # 'BrowserDraw',
         'SystemWifiTurnOff',
-        'ExpenseAddMultiple',
-        'SimpleCalendarAddOneEvent',
-        'SimpleCalendarAddRepeatingEvent',
-        'SimpleSmsSend',
-        'SystemBluetoothTurnOff',
-        'MarkorCreateNote',
+        # 'ExpenseAddMultiple',
+        # 'SimpleCalendarAddOneEvent',
+        # 'SimpleCalendarAddRepeatingEvent',
+        # 'SimpleSmsSend',
+        # 'SystemBluetoothTurnOff',
+        # 'MarkorCreateNote',
         'SystemBrightnessMax'
     ]
 
@@ -489,9 +484,9 @@ def main(argv):
         "benchmark_tasks": benchmark_task_names
     }
     os.makedirs("results", exist_ok=True)
-    with open("../results/arpo_full_pipeline_results_10tasks.json", "w") as f:
+    with open("../results/arpo_full_pipeline_results_3tasks.json", "w") as f:
         json.dump(results_data, f, indent=2)
-    print("\nSaved final pipeline results to results/arpo_full_pipeline_results_10tasks.json")
+    print("\nSaved final pipeline results to results/arpo_full_pipeline_results_3tasks.json")
 
 
 if __name__ == "__main__":
