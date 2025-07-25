@@ -1,18 +1,12 @@
 # LLM Agent Evaluation Framework for Android World
 
-This project contains a lightweight framework for evaluating the performance of Large Language Model (LLM) agents on the `android_world` benchmark.
+This project contains a full-stack research pipeline for evaluating and optimizing Large Language Model (LLM) agents on the `android_world` benchmark. It is submitted as a solution to the QualGent Research Engineer coding challenges.
 
-The framework is designed to:
+The project is divided into two main parts:
 
-* Run an expert agent (`t3a`) on a series of tasks in a live Android emulator.
+1. **Initial Evaluation Framework:** A system for benchmarking a custom-prompted agent against the expert `t3a` agent to measure baseline `step_accuracy`.
 
-* Simultaneously prompt a custom LLM with the same observations.
-
-* Compare the actions of the custom LLM against the expert agent to calculate a "step accuracy" score.
-
-* Test and compare different prompting strategies (Zero-Shot, Few-Shot, Self-Reflection).
-
-* Log detailed results for analysis.
+2. **Advanced Prompt Optimization Pipeline:** A three-stage pipeline that uses a multimodal model (Gemini 2.5), simulated black-box optimization (Text2Grad), and reinforcement learning (ARPO) to automatically discover and refine a high-performing prompt policy.
 
 ## 1. Setup
 
@@ -51,9 +45,7 @@ pip install -e .
 Navigate back to this project's root directory and install its requirements.
 
 cd path/to/your/evaluation_framework
-pip install -r requirements.txt
-
-Note: You may need to create a requirements.txt file with 'absl-py', 'google-generativeai', etc.
+pip install google-generativeai Pillow absl-py
 
 
 5. **Set API Key:**
@@ -83,7 +75,7 @@ self._env, adb_controller, grpc_port
 
 ### Step 1: Launch the Emulator
 
-Before running the evaluation, you must start the Android emulator from a terminal with the correct gRPC port.
+Before running any scripts, you must start the Android emulator from a terminal with the correct gRPC port.
 
 In PowerShell (replace YourName)
 
@@ -92,20 +84,43 @@ $avd_name = "AndroidWorldAvd"
 & $emulator_path -avd $avd_name -no-snapshot -grpc 8554
 
 
-### Step 2: Run the Evaluation
+### Step 2: Running the Scripts
 
-Once the emulator is running, you can run the evaluation script from the project's root directory. Use the flags to control the number of episodes and the prompting strategy.
+Navigate into the `src/` directory to run the main scripts.
 
-**Run a 10-episode evaluation using the `few_shot` prompt variant:**
-
-python -m src.evaluation --num_episodes=10 --prompt_variant=few_shot
+cd src
 
 
-**Run all three prompt variants sequentially:**
+#### Part 1: Initial Evaluation (First Challenge)
 
-python -m src.evaluation --num_episodes=10 --prompt_variant=zero_shot; python -m src.evaluation --num_episodes=10 --prompt_variant=few_shot; python -m src.evaluation --num_episodes=10 --prompt_variant=self_reflection
+To run the initial evaluation comparing a custom prompter to the expert `t3a` agent:
+
+python evaluation.py --num_episodes=10 --prompt_variant=few_shot
+
+
+#### Part 2: Advanced Prompt Optimization Pipeline
+
+**Stage 1: `gemini_prompting.py` (Vision-to-Prompt)**
+
+This script generates a baseline prompt from a screenshot. Make sure you have a screenshot saved in the `screenshots/` directory at the project root.
+
+python gemini_prompting.py --image="../screenshots/contacts_page.png" --goal="Create a new contact"
+
+
+**Stage 2: `text2grad_opt.py` (Black-Box Optimization)**
+
+This script runs a simulated Text2Grad loop to find an improved prompt.
+
+python text2grad_opt.py
+
+
+**Stage 3: `arpo_runner.py` (Reinforcement Learning)**
+
+This is the main script for the advanced challenge. It runs the full ARPO training loop and the final comparative benchmark.
+
+python arpo_runner.py
 
 
 ### Step 3: View Results
 
-The script will print a summary to the console and save detailed logs to the `results/` directory in a file named `evaluation_results_[variant_name].json`.
+The scripts will print summaries to the console and sav
