@@ -1,3 +1,4 @@
+# arpo_runner.py
 import os
 import re
 import random
@@ -16,7 +17,7 @@ try:
     from src.text2grad_opt import run_text2grad_optimization
 except ImportError:
     # Define a fallback function if the import fails
-    def run_text2grad_optimization():
+    def run_text2grad_optimization(training_tasks=None):  # Added tasks for compatibility
         print("WARNING: Could not import run_text2grad_optimization. Using a default baseline prompt.")
         return """Your high-level goal is: {goal}
 Here is a history of your previous actions:
@@ -51,19 +52,23 @@ def get_llm_response(prompt: str) -> str:
     """Generic wrapper to call the LLM."""
     if not FLAGS.gcp_api_key:
         return "ERROR: API Key not set"
-    # MR. TERRIFIC'S FIX: Upgraded model to Gemini 2.5 Pro.
     llm = infer.GeminiGcpWrapper('gemini-2.5-pro')
     response, _, _ = llm.predict(prompt)
     return response
 
 
 def parse_action_from_llm_response(response_text: str, ui_elements: list[Any]) -> dict[str, Any] | None:
-    """Extracts an action dictionary from the LLM's full response."""
+    """
+    A more robust parser that is less sensitive to exact formatting.
+    Extracts an action dictionary from the LLM's full response.
+    """
     action_str = response_text
+    # Be more flexible in finding the action line.
     if "Action:" in response_text:
         action_str = response_text.split("Action:")[-1].strip()
 
-    click_match = re.search(r'CLICK\("(.+?)"\)', action_str)
+    # Use case-insensitive matching for all regex.
+    click_match = re.search(r'CLICK\("(.+?)"\)', action_str, re.IGNORECASE)
     if click_match:
         target_text = click_match.group(1)
         for i, element in enumerate(ui_elements):
@@ -72,7 +77,7 @@ def parse_action_from_llm_response(response_text: str, ui_elements: list[Any]) -
                 return {"action_type": "click", "index": i}
         return {"action_type": "click", "target_text": target_text}
 
-    type_match = re.search(r'TYPE\("(.+?)", "(.+?)"\)', action_str)
+    type_match = re.search(r'TYPE\("(.+?)", "(.+?)"\)', action_str, re.IGNORECASE)
     if type_match:
         text_to_type = type_match.group(1)
         target_field_text = type_match.group(2)
@@ -82,12 +87,12 @@ def parse_action_from_llm_response(response_text: str, ui_elements: list[Any]) -
                 return {"action_type": "input_text", "text": text_to_type, "index": i}
         return {"action_type": "input_text", "text": text_to_type, "target_text": target_field_text}
 
-    open_app_match = re.search(r'OPEN_APP\("(.+?)"\)', action_str)
+    open_app_match = re.search(r'OPEN_APP\("(.+?)"\)', action_str, re.IGNORECASE)
     if open_app_match:
         app_name = open_app_match.group(1)
         return {"action_type": "open_app", "app_name": app_name}
 
-    scroll_match = re.search(r'SCROLL\("(.+?)"\)', action_str)
+    scroll_match = re.search(r'SCROLL\("(.+?)"\)', action_str, re.IGNORECASE)
     if scroll_match:
         direction = scroll_match.group(1).lower()
         if direction in ["up", "down", "left", "right"]:
@@ -96,7 +101,7 @@ def parse_action_from_llm_response(response_text: str, ui_elements: list[Any]) -
     if "navigate_back" in action_str.lower():
         return {"action_type": "navigate_back"}
 
-    if "STATUS_COMPLETE" in action_str.upper():
+    if "status_complete" in action_str.lower().replace("_", ""):
         return {"action_type": "status", "goal_status": "complete"}
 
     return None
@@ -344,6 +349,49 @@ def arpo_update_policy(base_policy: str, trajectory: List[Dict]) -> str:
     return base_policy + "\n\nSTRATEGY FAILED. Your previous approach did not work. Re-read the goal carefully. Think step-by-step about a new strategy."
 
 
+def synthesize_new_policy(base_policy: str, arpo_policy: str) -> str:
+    """
+    The Synthesis Module. This function uses a meta-LLM to
+    analyze the bloated ARPO policy and synthesize a new, clean, principled policy.
+    """
+    print("\n" + "=" * 25 + " Stage 3.5: Synthesizing New Policy " + "=" * 25)
+
+    # Extract just the corrective constraints from the ARPO policy
+    constraints = arpo_policy.replace(base_policy, "").strip()
+
+    if not constraints:
+        print(" -> No constraints found. ARPO policy is already clean. Returning as is.")
+        return arpo_policy
+
+    # MR. TERRIFIC'S FIX: The meta-prompt is now much more explicit about the required output format.
+    meta_prompt = f"""You are an expert in AI agent behavior and prompt engineering.
+Your task is to analyze an existing prompt and a list of error corrections, then synthesize them into a new, improved prompt.
+
+**CRITICAL INSTRUCTIONS:**
+1.  Identify the underlying principles from the "RAW ERROR CORRECTIONS".
+2.  Integrate these principles as 2-3 concise, general rules at the beginning of the "BASE PROMPT".
+3.  The final output MUST be a complete, drop-in replacement for the base prompt.
+4.  Crucially, the final output MUST strictly adhere to the original's structure, including the `Reason:` and `Action:` formatting and all placeholders like `{{goal}}`, `{{history}}`, and `{{observation}}`.
+
+**BASE PROMPT:**
+---
+{base_policy}
+---
+
+**RAW ERROR CORRECTIONS TO ANALYZE:**
+---
+{constraints}
+---
+
+**NEW, SYNTHESIZED PROMPT (must be a complete, valid prompt and nothing else):**
+"""
+
+    print(" -> Querying meta-LLM to synthesize principles...")
+    synthesized_policy = get_llm_response(meta_prompt)
+    print(" -> Synthesis complete.")
+    return synthesized_policy.strip()
+
+
 def main(argv):
     if FLAGS.gcp_api_key:
         os.environ["GCP_API_KEY"] = FLAGS.gcp_api_key
@@ -355,25 +403,18 @@ def main(argv):
     print("\n" + "=" * 25 + " Stage 1 & 2: Text2Grad & ARPO Training " + "=" * 25)
 
     gemini_baseline_policy = "Your goal is: {goal}\nHere are the UI elements on the screen:\n{observation}\nWhat is the next action? Respond ONLY in the format: Action: CLICK(\"element_text\")."
-    text2grad_policy = run_text2grad_optimization()
 
-    # Implement Structured Mixed-Task Training with a focused set of 3 tasks.
     training_task_names = [
         'ContactsAddContact',
-        # 'BrowserDraw',
         'SystemWifiTurnOff',
-        # 'ExpenseAddMultiple',
-        # 'SimpleCalendarAddOneEvent',
-        # 'SimpleCalendarAddRepeatingEvent',
-        # 'SimpleSmsSend',
-        # 'SystemBluetoothTurnOff',
-        # 'MarkorCreateNote',
         'SystemBrightnessMax'
     ]
     training_tasks = [aw_registry[name] for name in training_task_names if name in aw_registry]
     if not training_tasks:
         print("FATAL: No valid training tasks found. Exiting.")
         return
+
+    text2grad_policy = run_text2grad_optimization(training_tasks=training_tasks)
 
     current_policy = text2grad_policy
     reward_history = []
@@ -397,23 +438,19 @@ def main(argv):
                 print("  -> Policy is suboptimal. Updating with ARPO...")
                 current_policy = arpo_update_policy(current_policy, trajectory)
             elif reward == 1.0:
-                print("  -> Policy is optimal. Exploiting current prompt.")
-                current_policy = text2grad_policy
+                print("  -> Policy is optimal. Retaining learned policy.")
+                pass
     arpo_final_policy = current_policy
+
+    # --- Stage 3.5: Synthesis Module ---
+    synthesized_policy = synthesize_new_policy(text2grad_policy, arpo_final_policy)
 
     # --- Final benchmark across the three training tasks ---
     print("\n" + "=" * 25 + " FINAL MULTI-TASK BENCHMARK " + "=" * 25)
 
     benchmark_task_names = [
         'ContactsAddContact',
-        # 'BrowserDraw',
         'SystemWifiTurnOff',
-        # 'ExpenseAddMultiple',
-        # 'SimpleCalendarAddOneEvent',
-        # 'SimpleCalendarAddRepeatingEvent',
-        # 'SimpleSmsSend',
-        # 'SystemBluetoothTurnOff',
-        # 'MarkorCreateNote',
         'SystemBrightnessMax'
     ]
 
@@ -421,7 +458,8 @@ def main(argv):
     policies_to_benchmark = {
         "Gemini_Baseline": gemini_baseline_policy,
         "Text2Grad_Optimized": text2grad_policy,
-        "ARPO_Optimized": arpo_final_policy
+        "ARPO_Optimized": arpo_final_policy,
+        "ARPO_Synthesized": synthesized_policy
     }
 
     for name, policy in policies_to_benchmark.items():
@@ -477,16 +515,17 @@ def main(argv):
         "prompt_improvement": {
             "gemini_baseline": gemini_baseline_policy,
             "text2grad_optimized": text2grad_policy,
-            "arpo_optimized": arpo_final_policy
+            "arpo_optimized": arpo_final_policy,
+            "arpo_synthesized": synthesized_policy
         },
         "reward_curve": reward_history,
         "benchmark_results": benchmark_results,
         "benchmark_tasks": benchmark_task_names
     }
     os.makedirs("results", exist_ok=True)
-    with open("../results/arpo_full_pipeline_results_3tasks.json", "w") as f:
+    with open("../results/arpo_full_pipeline_results_synthesis.json", "w") as f:
         json.dump(results_data, f, indent=2)
-    print("\nSaved final pipeline results to results/arpo_full_pipeline_results_3tasks.json")
+    print("\nSaved final pipeline results to results/arpo_full_pipeline_results_synthesis.json")
 
 
 if __name__ == "__main__":
