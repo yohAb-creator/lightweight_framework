@@ -1,57 +1,57 @@
 {
   "prompt_improvement": {
     "gemini_baseline": "Your goal is: {goal}\nHere are the UI elements on the screen:\n{observation}\nWhat is the next action? Respond ONLY in the format: Action: CLICK(\"element_text\").",
-    "text2grad_optimized": "Be precise and logical. Your high-level goal is: {goal}\nHere is a history of your previous actions:\n{history}\nHere are the available UI elements on the current screen:\n{observation}\nBased on your history and the current screen, what is your next action? If the task is complete, respond with STATUS_COMPLETE.\nRespond ONLY in the format:\nReason: [Your reasoning here]\nAction: [Your action here in the format CLICK(\"text\"), OPEN_APP(\"App Name\"), SCROLL(\"direction\"), TYPE(\"text_to_type\", \"target_field_text\"), or STATUS_COMPLETE]",
-    "arpo_optimized": "Be precise and logical. Your high-level goal is: {goal}\nHere is a history of your previous actions:\n{history}\nHere are the available UI elements on the current screen:\n{observation}\nBased on your history and the current screen, what is your next action? If the task is complete, respond with STATUS_COMPLETE.\nRespond ONLY in the format:\nReason: [Your reasoning here]\nAction: [Your action here in the format CLICK(\"text\"), OPEN_APP(\"App Name\"), SCROLL(\"direction\"), TYPE(\"text_to_type\", \"target_field_text\"), or STATUS_COMPLETE]\n\nSTRATEGY FAILED. Your previous approach did not work. Re-read the goal carefully. Think step-by-step about a new strategy.\n\nCRITICAL: Your previous attempts to perform actions like 'STATUS_COMPLETE' on this screen have failed. Re-examine the UI elements provided and choose a different, valid action.\n\nSTRATEGY FAILED. Your previous approach did not work. Re-read the goal carefully. Think step-by-step about a new strategy.\n\nCRITICAL: Your previous attempts to perform actions like '' on this screen have failed. Re-examine the UI elements provided and choose a different, valid action.\n\nSTRATEGY FAILED. Your previous approach did not work. Re-read the goal carefully. Think step-by-step about a new strategy.\n\nCRITICAL: Your previous attempts to perform actions like '' on this screen have failed. Re-examine the UI elements provided and choose a different, valid action.\n\nSTRATEGY FAILED. Your previous approach did not work. Re-read the goal carefully. Think step-by-step about a new strategy.\n\nCRITICAL: Your previous attempts to perform actions like '' on this screen have failed. Re-examine the UI elements provided and choose a different, valid action.\n\nSTRATEGY FAILED. Your previous approach did not work. Re-read the goal carefully. Think step-by-step about a new strategy.\n\nSTRATEGY FAILED. Your previous approach did not work. Re-read the goal carefully. Think step-by-step about a new strategy.\n\nCRITICAL: Your previous attempts to perform actions like '' on this screen have failed. Re-examine the UI elements provided and choose a different, valid action.\n\nSTRATEGY FAILED. Your previous approach did not work. Re-read the goal carefully. Think step-by-step about a new strategy.\n\nCRITICAL: Your previous attempts to perform actions like 'SCROLL(\"down\")' on this screen have failed. Re-examine the UI elements provided and choose a different, valid action.\n\nCRITICAL: Your previous attempts to perform actions like 'SCROLL(\"down\")' on this screen have failed. Re-examine the UI elements provided and choose a different, valid action.\n\nSTRATEGY FAILED. Your previous approach did not work. Re-read the goal carefully. Think step-by-step about a new strategy.\n\nCRITICAL: Your previous attempts to perform actions like '' on this screen have failed. Re-examine the UI elements provided and choose a different, valid action.\n\nSTRATEGY FAILED. Your previous approach did not work. Re-read the goal carefully. Think step-by-step about a new strategy.\n\nCRITICAL: Your previous attempts to perform actions like '' on this screen have failed. Re-examine the UI elements provided and choose a different, valid action.\n\nCRITICAL: Your previous attempts to perform actions like '' on this screen have failed. Re-examine the UI elements provided and choose a different, valid action.\n\nCRITICAL: Your previous attempts to perform actions like '' on this screen have failed. Re-examine the UI elements provided and choose a different, valid action.\n\nSTRATEGY FAILED. Your previous approach did not work. Re-read the goal carefully. Think step-by-step about a new strategy.\n\nCRITICAL: Your previous attempts to perform actions like '' on this screen have failed. Re-examine the UI elements provided and choose a different, valid action.\n\nSTRATEGY FAILED. Your previous approach did not work. Re-read the goal carefully. Think step-by-step about a new strategy.\n\nCRITICAL: Your previous attempts to perform actions like '' on this screen have failed. Re-examine the UI elements provided and choose a different, valid action.\n\nCRITICAL: Your previous attempts to perform actions like '' on this screen have failed. Re-examine the UI elements provided and choose a different, valid action.\n\nCRITICAL: Your previous attempts to perform actions like '' on this screen have failed. Re-examine the UI elements provided and choose a different, valid action.\n\nSTRATEGY FAILED. Your previous approach did not work. Re-read the goal carefully. Think step-by-step about a new strategy.\n\nCRITICAL: Your previous attempts to perform actions like '' on this screen have failed. Re-examine the UI elements provided and choose a different, valid action.\n\nCRITICAL: Your previous attempts to perform actions like '' on this screen have failed. Re-examine the UI elements provided and choose a different, valid action.\n\nCRITICAL: Your previous attempts to perform actions like '' on this screen have failed. Re-examine the UI elements provided and choose a different, valid action.",
+    "text2grad_optimized": "Your high-level goal is: {goal}\nHere is a history of your previous actions:\n{history}\nHere are the available UI elements on the current screen:\n{observation}\nBased on your history and the current screen, what is your next action? If the task is complete, respond with STATUS_COMPLETE.\nRespond ONLY in the format:\nReason: [Your reasoning here]\nAction: [Your action here in the format CLICK(\"text\"), OPEN_APP(\"App Name\"), SCROLL(\"direction\"), TYPE(\"text_to_type\", \"target_field_text\"), or STATUS_COMPLETE]",
+    "arpo_optimized": "Your high-level goal is: {goal}\nHere is a history of your previous actions:\n{history}\nHere are the available UI elements on the current screen:\n{observation}\nBased on your history and the current screen, what is your next action? If the task is complete, respond with STATUS_COMPLETE.\nRespond ONLY in the format:\nReason: [Your reasoning here]\nAction: [Your action here in the format CLICK(\"text\"), OPEN_APP(\"App Name\"), SCROLL(\"direction\"), TYPE(\"text_to_type\", \"target_field_text\"), or STATUS_COMPLETE]\n\nSTRATEGY FAILED. Your previous approach did not work. Re-read the goal carefully. Think step-by-step about a new strategy.\n\nSTRATEGY FAILED. Your previous approach did not work. Re-read the goal carefully. Think step-by-step about a new strategy.\n\nSTRATEGY FAILED. Your previous approach did not work. Re-read the goal carefully. Think step-by-step about a new strategy.\n\nCRITICAL: Your previous attempts to perform actions like '' on this screen have failed. Re-examine the UI elements provided and choose a different, valid action.\n\nCRITICAL: Your previous attempts to perform actions like '' on this screen have failed. Re-examine the UI elements provided and choose a different, valid action.\n\nCRITICAL: Your previous attempts to perform actions like '' on this screen have failed. Re-examine the UI elements provided and choose a different, valid action.\n\nSTRATEGY FAILED. Your previous approach did not work. Re-read the goal carefully. Think step-by-step about a new strategy.\n\nCRITICAL: Your previous attempts to perform actions like '' on this screen have failed. Re-examine the UI elements provided and choose a different, valid action.\n\nSTRATEGY FAILED. Your previous approach did not work. Re-read the goal carefully. Think step-by-step about a new strategy.\n\nCRITICAL: Your previous attempts to perform actions like 'STATUS_COMPLETE' on this screen have failed. Re-examine the UI elements provided and choose a different, valid action.\n\nSTRATEGY FAILED. Your previous approach did not work. Re-read the goal carefully. Think step-by-step about a new strategy.\n\nSTRATEGY FAILED. Your previous approach did not work. Re-read the goal carefully. Think step-by-step about a new strategy.\n\nSTRATEGY FAILED. Your previous approach did not work. Re-read the goal carefully. Think step-by-step about a new strategy.\n\nSTRATEGY FAILED. Your previous approach did not work. Re-read the goal carefully. Think step-by-step about a new strategy.\n\nSTRATEGY FAILED. Your previous approach did not work. Re-read the goal carefully. Think step-by-step about a new strategy.\n\nCRITICAL: Your previous attempts to perform actions like '' on this screen have failed. Re-examine the UI elements provided and choose a different, valid action.\n\nCRITICAL: Your previous attempts to perform actions like '' on this screen have failed. Re-examine the UI elements provided and choose a different, valid action.\n\nSTRATEGY FAILED. Your previous approach did not work. Re-read the goal carefully. Think step-by-step about a new strategy.\n\nCRITICAL: Your previous attempts to perform actions like '' on this screen have failed. Re-examine the UI elements provided and choose a different, valid action.\n\nSTRATEGY FAILED. Your previous approach did not work. Re-read the goal carefully. Think step-by-step about a new strategy.\n\nSTRATEGY FAILED. Your previous approach did not work. Re-read the goal carefully. Think step-by-step about a new strategy.\n\nCRITICAL: Your previous attempts to perform actions like 'SCROLL(\"down\")' on this screen have failed. Re-examine the UI elements provided and choose a different, valid action.\n\nCRITICAL: Your previous attempts to perform actions like '' on this screen have failed. Re-examine the UI elements provided and choose a different, valid action.\n\nSTRATEGY FAILED. Your previous approach did not work. Re-read the goal carefully. Think step-by-step about a new strategy.\n\nCRITICAL: Your previous attempts to perform actions like '' on this screen have failed. Re-examine the UI elements provided and choose a different, valid action.\n\nSTRATEGY FAILED. Your previous approach did not work. Re-read the goal carefully. Think step-by-step about a new strategy.\n\nSTRATEGY FAILED. Your previous approach did not work. Re-read the goal carefully. Think step-by-step about a new strategy.\n\nCRITICAL: Your previous attempts to perform actions like 'SCROLL(\"down\")' on this screen have failed. Re-examine the UI elements provided and choose a different, valid action.\n\nCRITICAL: Your previous attempts to perform actions like '' on this screen have failed. Re-examine the UI elements provided and choose a different, valid action.\n\nCRITICAL: Your previous attempts to perform actions like '' on this screen have failed. Re-examine the UI elements provided and choose a different, valid action.",
     "arpo_synthesized": ""
   },
   "reward_curve": [
-    0.144,
-    0.8480000000000001,
-    0.8480000000000001,
-    0.8480000000000001,
+    0.168,
     0.8560000000000001,
-    0.8480000000000001,
-    0.8480000000000001,
-    0.8480000000000001,
+    0.888,
+    0.912,
     0.8560000000000001,
     0.8560000000000001,
-    0.03200000000000001,
-    0.015999999999999993,
-    0.03200000000000001,
-    0.08000000000000002,
-    0.06399999999999999,
-    0.03200000000000001,
-    0.03200000000000001,
-    0.048,
-    0.03200000000000001,
-    0.048,
-    0.048,
-    0.048,
-    0.05600000000000001,
-    0.015999999999999993,
-    0.03200000000000001,
-    0.03200000000000001,
-    0.048,
-    0.03200000000000001,
+    0.8800000000000001,
+    0.8560000000000001,
+    0.928,
+    0.8560000000000001,
     0.039999999999999994,
-    0.03200000000000001
+    0.008000000000000007,
+    0.048,
+    0.039999999999999994,
+    0.008000000000000007,
+    0.008000000000000007,
+    0.008000000000000007,
+    0.015999999999999993,
+    0.039999999999999994,
+    0.024,
+    0.008000000000000007,
+    0.015999999999999993,
+    0.008000000000000007,
+    0.039999999999999994,
+    0.024,
+    0.015999999999999993,
+    0.015999999999999993,
+    0.008000000000000007,
+    0.008000000000000007,
+    0.015999999999999993
   ],
   "benchmark_results": {
     "Gemini_Baseline": {
-      "Task Completion Rate": 0.6666666666666666,
-      "Action Accuracy": 0.09865079365079364
+      "Task Completion Rate": 0.4444444444444444,
+      "Action Accuracy": 0.08724867724867724
     },
     "Text2Grad_Optimized": {
-      "Task Completion Rate": 0.3333333333333333,
-      "Action Accuracy": 0.28150793650793654
+      "Task Completion Rate": 0.5555555555555555,
+      "Action Accuracy": 0.2265873015873016
     },
     "ARPO_Optimized": {
-      "Task Completion Rate": 0.6666666666666666,
-      "Action Accuracy": 0.2874338624338625
+      "Task Completion Rate": 0.5555555555555555,
+      "Action Accuracy": 0.21674603174603171
     },
     "ARPO_Synthesized": {
-      "Task Completion Rate": 0.3333333333333333,
+      "Task Completion Rate": 0.1111111111111111,
       "Action Accuracy": 0.0
     }
   },

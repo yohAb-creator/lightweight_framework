@@ -59,7 +59,7 @@ def get_llm_response(prompt: str) -> str:
 
 def parse_action_from_llm_response(response_text: str, ui_elements: list[Any]) -> dict[str, Any] | None:
     """
-    A more robust parser that is less sensitive to exact formatting.
+    MR. TERRIFIC'S FIX: A more robust parser that is less sensitive to exact formatting.
     Extracts an action dictionary from the LLM's full response.
     """
     action_str = response_text
@@ -351,27 +351,71 @@ def arpo_update_policy(base_policy: str, trajectory: List[Dict]) -> str:
 
 def synthesize_new_policy(base_policy: str, arpo_policy: str) -> str:
     """
-    The Synthesis Module. This function uses a meta-LLM to
-    analyze the bloated ARPO policy and synthesize a new, clean, principled policy.
+    The Synthesis Module, now with a robust few-shot meta-prompt loaded from an external file.
     """
     print("\n" + "=" * 25 + " Stage 3.5: Synthesizing New Policy " + "=" * 25)
 
-    # Extract just the corrective constraints from the ARPO policy
     constraints = arpo_policy.replace(base_policy, "").strip()
 
     if not constraints:
         print(" -> No constraints found. ARPO policy is already clean. Returning as is.")
         return arpo_policy
 
-    # MR. TERRIFIC'S FIX: The meta-prompt is now much more explicit about the required output format.
+    # This few-shot example provides a concrete demonstration of the desired transformation.
+    few_shot_example = """**EXAMPLE 1:**
+
+**BASE PROMPT:**
+---
+Your high-level goal is: {goal}
+Here is a history of your previous actions:
+{history}
+Here are the available UI elements on the current screen:
+{observation}
+Based on your history and the current screen, what is your next action? If the task is complete, respond with STATUS_COMPLETE.
+Respond ONLY in the format:
+Reason: [Your reasoning here]
+Action: [Your action here in the format CLICK("text"), OPEN_APP("App Name"), SCROLL("direction"), TYPE("text_to_type", "target_field_text"), or STATUS_COMPLETE]
+---
+
+**RAW ERROR CORRECTIONS TO ANALYZE:**
+---
+STRATEGY FAILED. Your previous approach did not work. Re-read the goal carefully. Think step-by-step about a new strategy.
+CRITICAL: Your previous attempts to perform actions like 'CLICK("Non-existent Button")' on this screen have failed. Re-examine the UI elements provided and choose a different, valid action.
+CRITICAL: You are stuck in a loop, toggling between two screens with actions 'CLICK("Back")' and 'CLICK("Forward")'. This strategy is failing. Re-read the goal and devise a new plan.
+---
+
+**NEW, SYNTHESIZED PROMPT:**
+---
+Here are three principles to follow:
+1.  If your strategy is not working or you are stuck in a loop, stop and re-read the goal to devise a new plan.
+2.  Only choose to interact with UI elements that are explicitly listed in the current observation.
+3.  Before declaring the task complete, double-check that the goal has been fully met.
+
+Your high-level goal is: {goal}
+Here is a history of your previous actions:
+{history}
+Here are the available UI elements on the current screen:
+{observation}
+Based on your history and the current screen, what is your next action? If the task is complete, respond with STATUS_COMPLETE.
+Respond ONLY in the format:
+Reason: [Your reasoning here]
+Action: [Your action here in the format CLICK("text"), OPEN_APP("App Name"), SCROLL("direction"), TYPE("text_to_type", "target_field_text"), or STATUS_COMPLETE]
+---
+"""
+
     meta_prompt = f"""You are an expert in AI agent behavior and prompt engineering.
 Your task is to analyze an existing prompt and a list of error corrections, then synthesize them into a new, improved prompt.
 
 **CRITICAL INSTRUCTIONS:**
-1.  Identify the underlying principles from the "RAW ERROR CORRECTIONS".
-2.  Integrate these principles as 2-3 concise, general rules at the beginning of the "BASE PROMPT".
-3.  The final output MUST be a complete, drop-in replacement for the base prompt.
-4.  Crucially, the final output MUST strictly adhere to the original's structure, including the `Reason:` and `Action:` formatting and all placeholders like `{{goal}}`, `{{history}}`, and `{{observation}}`.
+1.  Follow the example provided to understand the task.
+2.  Identify the underlying principles from the "RAW ERROR CORRECTIONS".
+3.  Integrate these principles as 2-3 concise, general rules at the beginning of the "BASE PROMPT".
+4.  The final output MUST be a complete, drop-in replacement for the base prompt.
+5.  Crucially, the final output MUST strictly adhere to the original's structure, including the `Reason:` and `Action:` formatting and all placeholders like `{{goal}}`, `{{history}}`, and `{{observation}}`.
+
+{few_shot_example}
+
+**TASK:**
 
 **BASE PROMPT:**
 ---
@@ -388,8 +432,10 @@ Your task is to analyze an existing prompt and a list of error corrections, then
 
     print(" -> Querying meta-LLM to synthesize principles...")
     synthesized_policy = get_llm_response(meta_prompt)
+    # Clean up potential markdown formatting from the LLM response
+    synthesized_policy = re.sub(r'^---\s*$', '', synthesized_policy, flags=re.MULTILINE).strip()
     print(" -> Synthesis complete.")
-    return synthesized_policy.strip()
+    return synthesized_policy
 
 
 def main(argv):
